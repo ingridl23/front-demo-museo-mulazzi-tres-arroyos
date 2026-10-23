@@ -1162,15 +1162,16 @@
                     let isSending = false;
 
                     // Toggle chat
-                    toggle.addEventListener('click', () => {
-                        isOpen = !isOpen;
-                        toggle.classList.toggle('rn-open', isOpen);
-                        chatWindow.classList.toggle('rn-visible', isOpen);
-                        if (isOpen) {
-                            inputEl.focus();
-                            // Mostrar mensaje inicial si es primera vez
-                            if (messagesEl.children.length === 0) {
-                                addMessage(INITIAL_MESSAGE, 'bot');
+                    document.addEventListener('click', (e) => {
+                        if (e.target.closest('#rn-chat-toggle')) {
+                            isOpen = !isOpen;
+                            toggle.classList.toggle('rn-open', isOpen);
+                            chatWindow.classList.toggle('rn-visible', isOpen);
+                            if (isOpen) {
+                                inputEl.focus();
+                                if (messagesEl.children.length === 0) {
+                                    addMessage(INITIAL_MESSAGE, 'bot');
+                                }
                             }
                         }
                     });
