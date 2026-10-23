@@ -1213,7 +1213,8 @@
                             .then(data => {
                                 removeTyping(typingEl);
                                 // Adaptá el campo según lo que devuelva tu Respond to Webhook
-                                const reply = data.output || data.response || data.text || data.message || JSON.stringify(data);
+                                const item = Array.isArray(data) ? data[0] : data;
+                                const reply = item.output || item.response || item.text || item.message || JSON.stringify(item);
                                 addMessage(reply, 'bot');
                             })
                             .catch(err => {
