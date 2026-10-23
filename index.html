@@ -1,805 +1,935 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./support.js"></script>
 </head>
+
 <body>
-<x-dc>
-<helmet data-dc-atomics>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box}
-html,body{margin:0}
-img{display:block;max-width:100%}
-a{color:var(--red,#E12A20);text-decoration:none}
-a:hover{color:#B71F17}
-::selection{background:var(--red,#E12A20);color:#fff}
-input,textarea,button{font-family:'Public Sans',sans-serif}
-input:focus,textarea:focus{outline:none;border-color:var(--red,#E12A20)!important;background:#fff!important}
-button{transition:filter .15s,background .15s,color .15s,border-color .15s}
-.mm-link:hover{color:var(--red,#E12A20)}
-.mm-btn:hover{filter:brightness(.92)}
-.mm-row:hover{background:#F6F4F0}
-.mm-card:hover{transform:translateY(-4px)}
-.mm-card{transition:transform .2s,box-shadow .2s}
-.mm-sala:hover{border-color:var(--red,#E12A20)!important}
-.mm-arr{transition:transform .2s}
-.mm-row:hover .mm-arr,.mm-card:hover .mm-arr{transform:translateX(5px)}
+    <x-dc>
+        <helmet data-dc-atomics>
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+            <style>
+                * {
+                    box-sizing: border-box
+                }
+                
+                html,
+                body {
+                    margin: 0
+                }
+                
+                img {
+                    display: block;
+                    max-width: 100%
+                }
+                
+                a {
+                    color: var(--red, #E12A20);
+                    text-decoration: none
+                }
+                
+                a:hover {
+                    color: #B71F17
+                }
+                
+                 ::selection {
+                    background: var(--red, #E12A20);
+                    color: #fff
+                }
+                
+                input,
+                textarea,
+                button {
+                    font-family: 'Public Sans', sans-serif
+                }
+                
+                input:focus,
+                textarea:focus {
+                    outline: none;
+                    border-color: var(--red, #E12A20)!important;
+                    background: #fff!important
+                }
+                
+                button {
+                    transition: filter .15s, background .15s, color .15s, border-color .15s
+                }
+                
+                .mm-link:hover {
+                    color: var(--red, #E12A20)
+                }
+                
+                .mm-btn:hover {
+                    filter: brightness(.92)
+                }
+                
+                .mm-row:hover {
+                    background: #F6F4F0
+                }
+                
+                .mm-card:hover {
+                    transform: translateY(-4px)
+                }
+                
+                .mm-card {
+                    transition: transform .2s, box-shadow .2s
+                }
+                
+                .mm-sala:hover {
+                    border-color: var(--red, #E12A20)!important
+                }
+                
+                .mm-arr {
+                    transition: transform .2s
+                }
+                
+                .mm-row:hover .mm-arr,
+                .mm-card:hover .mm-arr {
+                    transform: translateX(5px)
+                }
+                /* ---- Tablet ---- */
+                
+                @media (max-width:1024px) {
+                    [style*="grid-template-columns:repeat(4,1fr)"] {
+                        grid-template-columns: repeat(2, 1fr)!important
+                    }
+                    [style*="grid-template-columns:repeat(3,1fr)"] {
+                        grid-template-columns: repeat(2, 1fr)!important
+                    }
+                    [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"] {
+                        grid-template-columns: 1fr 1fr!important
+                    }
+                    [style*="grid-template-columns:256px 1fr"] {
+                        grid-template-columns: 200px 1fr!important
+                    }
+                    [style*="grid-template-columns:1.05fr 1fr"],
+                    [style*="grid-template-columns:1.15fr .85fr"],
+                    [style*="grid-template-columns:.9fr 1.1fr"],
+                    [style*="grid-template-columns:1.05fr .95fr"],
+                    [style*="grid-template-columns:1.6fr 1fr"] {
+                        grid-template-columns: 1fr!important;
+                        gap: 32px!important
+                    }
+                    header nav {
+                        gap: 18px!important
+                    }
+                }
+                /* ---- Teléfono ---- */
+                
+                @media (max-width:640px) {
+                    [style*="grid-template-columns"] {
+                        grid-template-columns: 1fr!important;
+                        gap: 18px!important
+                    }
+                    /* toolbar apilable */
+                    [style*="z-index:60;background:#171614"] {
+                        height: auto!important;
+                        padding: 8px 0!important
+                    }
+                    [style*="z-index:60;background:#171614"]>div {
+                        flex-wrap: wrap!important;
+                        gap: 10px!important
+                    }
+                    header {
+                        top: 0!important
+                    }
+                    header>div {
+                        flex-wrap: wrap!important;
+                        gap: 12px 16px!important
+                    }
+                    header nav {
+                        margin-left: 0!important;
+                        gap: 14px 16px!important;
+                        flex-wrap: wrap!important;
+                        font-size: 13px!important;
+                        width: 100%!important
+                    }
+                    /* secciones: menos padding vertical */
+                    main section {
+                        padding-top: 44px!important;
+                        padding-bottom: 44px!important
+                    }
+                    /* heros de alto completo → alto natural */
+                    [style*="min-height:86vh"] {
+                        min-height: auto!important;
+                        padding-top: 120px!important
+                    }
+                    [style*="min-height:80vh"] {
+                        min-height: auto!important
+                    }
+                    /* tabla admin apilada: alinear a la izquierda */
+                    aside {
+                        padding: 22px 16px!important
+                    }
+                    /* imágenes arqueadas menos altas */
+                    [style*="220px 220px"] {
+                        border-radius: 120px 120px 16px 16px!important;
+                        aspect-ratio: 1/1!important
+                    }
+                }
+            </style>
+        </helmet>
+        <div style="{{ rootVars }}">
 
-/* ---- Tablet ---- */
-@media (max-width:1024px){
-  [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
-  [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:repeat(2,1fr)!important}
-  [style*="grid-template-columns:1.4fr 1fr 1fr 1fr"]{grid-template-columns:1fr 1fr!important}
-  [style*="grid-template-columns:256px 1fr"]{grid-template-columns:200px 1fr!important}
-  [style*="grid-template-columns:1.05fr 1fr"],
-  [style*="grid-template-columns:1.15fr .85fr"],
-  [style*="grid-template-columns:.9fr 1.1fr"],
-  [style*="grid-template-columns:1.05fr .95fr"],
-  [style*="grid-template-columns:1.6fr 1fr"]{grid-template-columns:1fr!important;gap:32px!important}
-  header nav{gap:18px!important}
-}
+            <sc-if value="{{ showToolbar }}" hint-placeholder-val="{{ true }}">
+                <div style="position:sticky;top:0;z-index:60;background:#171614;color:#fff;height:46px;display:flex;align-items:center;">
+                    <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:16px;width:100%;">
+                        <div style="font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:700;">Template · Vista previa</div>
+                        <div style="display:flex;gap:3px;background:rgba(255,255,255,.08);padding:4px;border-radius:10px;">
+                            <button onClick="{{ goHome }}" style="{{ tHome }}">Inicio</button>
+                            <button onClick="{{ goEventoBtn }}" style="{{ tEvento }}">Detalle de evento</button>
+                            <button onClick="{{ goAdmin }}" style="{{ tAdmin }}">Panel admin</button>
+                        </div>
+                        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+                            <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
+                                <span style="font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;">Dirección</span>
+                                <div style="display:flex;gap:3px;background:rgba(255,255,255,.08);padding:4px;border-radius:10px;">
+                                    <button onClick="{{ setVA }}" style="{{ vA }}">A</button>
+                                    <button onClick="{{ setVB }}" style="{{ vB }}">B</button>
+                                    <button onClick="{{ setVC }}" style="{{ vC }}">C</button>
+                                </div>
+                            </div>
+                        </sc-if>
+                    </div>
+                </div>
+            </sc-if>
 
-/* ---- Teléfono ---- */
-@media (max-width:640px){
-  [style*="grid-template-columns"]{grid-template-columns:1fr!important;gap:18px!important}
-  /* toolbar apilable */
-  [style*="z-index:60;background:#171614"]{height:auto!important;padding:8px 0!important}
-  [style*="z-index:60;background:#171614"]>div{flex-wrap:wrap!important;gap:10px!important}
-  header{top:0!important}
-  header>div{flex-wrap:wrap!important;gap:12px 16px!important}
-  header nav{margin-left:0!important;gap:14px 16px!important;flex-wrap:wrap!important;font-size:13px!important;width:100%!important}
-  /* secciones: menos padding vertical */
-  main section{padding-top:44px!important;padding-bottom:44px!important}
-  /* heros de alto completo → alto natural */
-  [style*="min-height:86vh"]{min-height:auto!important;padding-top:120px!important}
-  [style*="min-height:80vh"]{min-height:auto!important}
-  /* tabla admin apilada: alinear a la izquierda */
-  aside{padding:22px 16px!important}
-  /* imágenes arqueadas menos altas */
-  [style*="220px 220px"]{border-radius:120px 120px 16px 16px!important;aspect-ratio:1/1!important}
-}
-</style>
-</helmet>
-<div style="{{ rootVars }}">
+            <header style="position:sticky;top:46px;z-index:50;background:rgba(251,250,248,.9);backdrop-filter:blur(12px);border-bottom:1px solid #E7E4DF;">
+                <div style="max-width:1280px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;gap:22px;">
+                    <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:13px;cursor:pointer;flex:none;">
+                        <div style="width:42px;height:42px;border-radius:10px;overflow:hidden;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.15);"><img src="uploads/logo-mulazzi-removebg-preview.png" alt="Museo Mulazzi" style="width:100%;height:100%;object-fit:cover;"></div>
+                        <div style="flex:none;">
+                            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:.01em;color:#171614;line-height:1;white-space:nowrap;">MUSEO MULAZZI</div>
+                            <div style="font-size:10.5px;letter-spacing:.18em;color:#9a948c;text-transform:uppercase;margin-top:5px;font-weight:600;white-space:nowrap;">Tres Arroyos</div>
+                        </div>
+                    </div>
+                    <nav style="margin-left:auto;display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500;color:#57534e;white-space:nowrap;">
+                        <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;">Inicio</span>
+                        <span class="mm-link" onClick="{{ goExpos }}" style="cursor:pointer;">Exposiciones</span>
+                        <span class="mm-link" onClick="{{ goArroyo }}" style="cursor:pointer;">Arroyo Seco</span>
+                        <span class="mm-link" onClick="{{ goVisita }}" style="cursor:pointer;">Visitá</span>
+                        <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;">El museo</span>
+                        <button class="mm-btn" onClick="{{ goAdmin }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:9px 17px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Gestión</button>
+                    </nav>
+                </div>
+            </header>
 
-<sc-if value="{{ showToolbar }}" hint-placeholder-val="{{ true }}">
-<div style="position:sticky;top:0;z-index:60;background:#171614;color:#fff;height:46px;display:flex;align-items:center;">
-  <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:16px;width:100%;">
-    <div style="font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:700;">Template · Vista previa</div>
-    <div style="display:flex;gap:3px;background:rgba(255,255,255,.08);padding:4px;border-radius:10px;">
-      <button onClick="{{ goHome }}" style="{{ tHome }}">Inicio</button>
-      <button onClick="{{ goEventoBtn }}" style="{{ tEvento }}">Detalle de evento</button>
-      <button onClick="{{ goAdmin }}" style="{{ tAdmin }}">Panel admin</button>
-    </div>
-    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-    <div style="margin-left:auto;display:flex;align-items:center;gap:8px;">
-      <span style="font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;">Dirección</span>
-      <div style="display:flex;gap:3px;background:rgba(255,255,255,.08);padding:4px;border-radius:10px;">
-        <button onClick="{{ setVA }}" style="{{ vA }}">A</button>
-        <button onClick="{{ setVB }}" style="{{ vB }}">B</button>
-        <button onClick="{{ setVC }}" style="{{ vC }}">C</button>
-      </div>
-    </div>
-    </sc-if>
-  </div>
-</div>
-</sc-if>
+            <main>
 
-<header style="position:sticky;top:46px;z-index:50;background:rgba(251,250,248,.9);backdrop-filter:blur(12px);border-bottom:1px solid #E7E4DF;">
-  <div style="max-width:1280px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;gap:22px;">
-    <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:13px;cursor:pointer;flex:none;">
-      <div style="width:42px;height:42px;border-radius:10px;overflow:hidden;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.15);"><img src="uploads/logo-mulazzi-removebg-preview.png" alt="Museo Mulazzi" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div style="flex:none;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;letter-spacing:.01em;color:#171614;line-height:1;white-space:nowrap;">MUSEO MULAZZI</div>
-        <div style="font-size:10.5px;letter-spacing:.18em;color:#9a948c;text-transform:uppercase;margin-top:5px;font-weight:600;white-space:nowrap;">Tres Arroyos</div>
-      </div>
-    </div>
-    <nav style="margin-left:auto;display:flex;align-items:center;gap:26px;font-size:14px;font-weight:500;color:#57534e;white-space:nowrap;">
-      <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;">Inicio</span>
-      <span class="mm-link" onClick="{{ goExpos }}" style="cursor:pointer;">Exposiciones</span>
-      <span class="mm-link" onClick="{{ goArroyo }}" style="cursor:pointer;">Arroyo Seco</span>
-      <span class="mm-link" onClick="{{ goVisita }}" style="cursor:pointer;">Visitá</span>
-      <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;">El museo</span>
-      <button class="mm-btn" onClick="{{ goAdmin }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:9px 17px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Gestión</button>
-    </nav>
-  </div>
-</header>
+                <!-- ===================== HOME ===================== -->
+                <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+                    <div data-screen-label="Inicio">
 
-<main>
+                        <!-- DIRECCIÓN A · Editorial -->
+                        <sc-if value="{{ isA }}" hint-placeholder-val="{{ true }}">
+                            <div>
+                                <section style="position:relative;min-height:86vh;display:flex;align-items:flex-end;background:#171614;overflow:hidden;">
+                                    <img src="uploads/hall-mulazzi.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;">
+                                    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,22,20,.15) 0%,rgba(23,22,20,.55) 55%,rgba(23,22,20,.9) 100%);"></div>
+                                    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px 72px;width:100%;">
+                                        <div style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:600;margin-bottom:24px;">Museo Municipal José A. Mulazzi · Tres Arroyos</div>
+                                        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff;font-size:clamp(40px,6.2vw,88px);line-height:.97;letter-spacing:-.02em;margin:0;max-width:16ch;text-wrap:balance;">La memoria de Tres Arroyos, viva.</h1>
+                                        <p style="color:rgba(255,255,255,.82);font-size:clamp(16px,1.5vw,20px);max-width:54ch;margin:26px 0 36px;line-height:1.55;">Historia, arqueología y arte en el edificio del antiguo mercado municipal. Un espacio para descubrir el patrimonio de la ciudad.</p>
+                                        <div style="display:flex;gap:13px;flex-wrap:wrap;">
+                                            <button class="mm-btn" onClick="{{ goEventoBtn }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:15px 27px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Ver agenda y eventos</button>
+                                            <button class="mm-btn" onClick="{{ goHome }}" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);padding:15px 27px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;backdrop-filter:blur(6px);">Planificá tu visita</button>
+                                        </div>
+                                    </div>
+                                </section>
 
-<!-- ===================== HOME ===================== -->
-<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-<div data-screen-label="Inicio">
+                                <section style="background:#fff;padding:82px 0;border-bottom:1px solid #E7E4DF;">
+                                    <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center;">
+                                        <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;">
+                                            <img src="uploads/flyer-mulazzi.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                                        </div>
+                                        <div>
+                                            <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:18px;">En exhibición</div>
+                                            <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.2vw,46px);line-height:1.02;letter-spacing:-.02em;color:#171614;margin:0;">{{ currentEvent.titulo }}</h2>
+                                            <p style="color:#57534e;font-size:18px;margin:12px 0 0;">{{ currentEvent.subtitulo }}</p>
+                                            <div style="display:flex;gap:22px;margin:26px 0 30px;color:#171614;font-weight:600;font-size:15px;flex-wrap:wrap;">
+                                                <span>{{ currentEvent.dateLabel }}</span>
+                                                <span style="color:#C9C4BC;">·</span>
+                                                <span>{{ currentEvent.hora }} h</span>
+                                                <span style="color:#C9C4BC;">·</span>
+                                                <span>{{ currentEvent.lugar }}</span>
+                                            </div>
+                                            <button class="mm-btn" onClick="{{ goEventoBtn }}" style="background:#171614;color:#fff;border:none;padding:14px 26px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Ver detalle del evento →</button>
+                                        </div>
+                                    </div>
+                                </section>
 
-<!-- DIRECCIÓN A · Editorial -->
-<sc-if value="{{ isA }}" hint-placeholder-val="{{ true }}">
-<div>
-  <section style="position:relative;min-height:86vh;display:flex;align-items:flex-end;background:#171614;overflow:hidden;">
-    <img src="uploads/hall-mulazzi.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;">
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,22,20,.15) 0%,rgba(23,22,20,.55) 55%,rgba(23,22,20,.9) 100%);"></div>
-    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px 72px;width:100%;">
-      <div style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.72);font-weight:600;margin-bottom:24px;">Museo Municipal José A. Mulazzi · Tres Arroyos</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;color:#fff;font-size:clamp(40px,6.2vw,88px);line-height:.97;letter-spacing:-.02em;margin:0;max-width:16ch;text-wrap:balance;">La memoria de Tres Arroyos, viva.</h1>
-      <p style="color:rgba(255,255,255,.82);font-size:clamp(16px,1.5vw,20px);max-width:54ch;margin:26px 0 36px;line-height:1.55;">Historia, arqueología y arte en el edificio del antiguo mercado municipal. Un espacio para descubrir el patrimonio de la ciudad.</p>
-      <div style="display:flex;gap:13px;flex-wrap:wrap;">
-        <button class="mm-btn" onClick="{{ goEventoBtn }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:15px 27px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Ver agenda y eventos</button>
-        <button class="mm-btn" onClick="{{ goHome }}" style="background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);padding:15px 27px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;backdrop-filter:blur(6px);">Planificá tu visita</button>
-      </div>
-    </div>
-  </section>
+                                <section style="max-width:1280px;margin:0 auto;padding:80px 24px 96px;">
+                                    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:12px;">
+                                        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.02em;color:#171614;margin:0;">Agenda</h2>
+                                        <span style="color:#9a948c;font-size:14px;">Actividades y muestras vigentes</span>
+                                    </div>
+                                    <sc-for list="{{ publicEvents }}" as="ev" hint-placeholder-count="3">
+                                        <div class="mm-row" onClick="{{ ev.open }}" style="cursor:pointer;padding:26px 8px;border-top:1px solid #E7E4DF;display:grid;grid-template-columns:130px 1fr auto;gap:26px;align-items:center;">
+                                            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--red,#E12A20);font-size:13.5px;letter-spacing:.06em;">{{ ev.chip }}</div>
+                                            <div>
+                                                <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;color:#171614;line-height:1.15;">{{ ev.titulo }}</div>
+                                                <div style="color:#9a948c;font-size:14px;margin-top:3px;">{{ ev.lugar }}</div>
+                                            </div>
+                                            <div class="mm-arr" style="font-size:22px;color:#C9C4BC;">→</div>
+                                        </div>
+                                    </sc-for>
+                                </section>
+                            </div>
+                        </sc-if>
 
-  <section style="background:#fff;padding:82px 0;border-bottom:1px solid #E7E4DF;">
-    <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.05fr 1fr;gap:52px;align-items:center;">
-      <div style="position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;">
-        <img src="uploads/flyer-mulazzi.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-      </div>
-      <div>
-        <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:18px;">En exhibición</div>
-        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,3.2vw,46px);line-height:1.02;letter-spacing:-.02em;color:#171614;margin:0;">{{ currentEvent.titulo }}</h2>
-        <p style="color:#57534e;font-size:18px;margin:12px 0 0;">{{ currentEvent.subtitulo }}</p>
-        <div style="display:flex;gap:22px;margin:26px 0 30px;color:#171614;font-weight:600;font-size:15px;flex-wrap:wrap;">
-          <span>{{ currentEvent.dateLabel }}</span>
-          <span style="color:#C9C4BC;">·</span>
-          <span>{{ currentEvent.hora }} h</span>
-          <span style="color:#C9C4BC;">·</span>
-          <span>{{ currentEvent.lugar }}</span>
+                        <!-- DIRECCIÓN B · Institucional -->
+                        <sc-if value="{{ isB }}">
+                            <div>
+                                <section style="display:grid;grid-template-columns:1fr 1fr;min-height:80vh;">
+                                    <div style="background:var(--red,#E12A20);color:#fff;padding:60px 56px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;">
+                                        <div style="width:66px;height:66px;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18);"><img src="uploads/logo-mulazzi-removebg-preview.png" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                        <div>
+                                            <div style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;opacity:.85;font-weight:600;margin-bottom:16px;">Museo Municipal</div>
+                                            <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,4.6vw,74px);line-height:.95;letter-spacing:-.02em;margin:0;">José A.<br>Mulazzi</h1>
+                                            <p style="font-size:18px;opacity:.92;margin:22px 0 0;max-width:34ch;line-height:1.5;">Patrimonio, historia y arte de Tres Arroyos, reunidos en el antiguo mercado municipal.</p>
+                                        </div>
+                                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;border-top:1px solid rgba(255,255,255,.28);padding-top:26px;">
+                                            <div>
+                                                <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;font-weight:600;margin-bottom:6px;">Horarios</div>
+                                                <div style="font-size:15px;font-weight:500;">Mar a Dom · 10 a 18 h</div>
+                                            </div>
+                                            <div>
+                                                <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;font-weight:600;margin-bottom:6px;">Dirección</div>
+                                                <div style="font-size:15px;font-weight:500;">Av. San Martín 323</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="position:relative;background:#171614;min-height:340px;">
+                                        <img src="uploads/museo-puerta.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                                    </div>
+                                </section>
+
+                                <section style="background:#FBFAF8;padding:80px 0;">
+                                    <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
+                                        <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:8px;">Agenda</div>
+                                        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.02em;color:#171614;margin:0 0 30px;">Próximas actividades</h2>
+                                        <sc-for list="{{ publicEvents }}" as="ev" hint-placeholder-count="3">
+                                            <div class="mm-row" onClick="{{ ev.open }}" style="cursor:pointer;background:#fff;border:1px solid #E7E4DF;border-radius:14px;padding:22px 26px;margin-bottom:14px;display:grid;grid-template-columns:88px 1fr auto;gap:26px;align-items:center;">
+                                                <div style="text-align:center;background:#FBFAF8;border-radius:10px;padding:10px 0;">
+                                                    <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;line-height:1;color:#171614;">{{ ev.dd }}</div>
+                                                    <div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--red,#E12A20);margin-top:3px;">{{ ev.mon }}</div>
+                                                </div>
+                                                <div>
+                                                    <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;">{{ ev.titulo }}</div>
+                                                    <div style="color:#9a948c;font-size:14px;margin-top:3px;">{{ ev.subtitulo }} · {{ ev.lugar }}</div>
+                                                </div>
+                                                <div class="mm-arr" style="font-size:22px;color:#C9C4BC;">→</div>
+                                            </div>
+                                        </sc-for>
+                                    </div>
+                                </section>
+
+                                <section style="max-width:1280px;margin:0 auto;padding:84px 24px 96px;">
+                                    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.02em;color:#171614;margin:0 0 32px;">Recorré las salas</h2>
+                                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+                                        <div class="mm-sala" style="border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
+                                            <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="uploads/hall-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                            <div style="padding:22px 24px;">
+                                                <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;">Historia</div>
+                                                <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;margin-top:6px;">Hall central</div>
+                                            </div>
+                                        </div>
+                                        <div class="mm-sala" style="border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
+                                            <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                            <div style="padding:22px 24px;">
+                                                <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;">Arqueología</div>
+                                                <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;margin-top:6px;">Culturas Andinas</div>
+                                            </div>
+                                        </div>
+                                        <div class="mm-sala" style="border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
+                                            <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="uploads/flyer-mulazzi.webp" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                            <div style="padding:22px 24px;">
+                                                <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;">Arte</div>
+                                                <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;margin-top:6px;">Muestras temporarias</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </sc-if>
+
+                        <!-- DIRECCIÓN C · Expresiva -->
+                        <sc-if value="{{ isC }}">
+                            <div>
+                                <section style="position:relative;background:#FBFAF8;padding:72px 0 40px;overflow:hidden;">
+                                    <div style="position:absolute;top:-90px;right:-70px;width:320px;height:320px;border-radius:50%;border:34px solid var(--red,#E12A20);opacity:.12;"></div>
+                                    <div style="position:absolute;top:20px;right:120px;width:150px;height:150px;border-radius:50%;border:20px solid var(--red,#E12A20);opacity:.16;"></div>
+                                    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;">
+                                        <div>
+                                            <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:22px;">Museo Municipal · Tres Arroyos</div>
+                                            <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(52px,8vw,116px);line-height:.86;letter-spacing:-.035em;margin:0;color:#171614;">Museo<br><span style="color:var(--red,#E12A20);">Mulazzi</span></h1>
+                                            <p style="color:#57534e;font-size:clamp(16px,1.5vw,20px);max-width:44ch;margin:28px 0 34px;line-height:1.55;">Un recorrido por la historia, la arqueología y el arte de la ciudad. Entrada libre y gratuita, todo el año.</p>
+                                            <div style="display:flex;gap:13px;flex-wrap:wrap;">
+                                                <button class="mm-btn" onClick="{{ goEventoBtn }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:15px 27px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Qué visitar</button>
+                                                <button class="mm-btn" onClick="{{ goHome }}" style="background:transparent;color:#171614;border:1px solid #171614;padding:15px 27px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">El museo</button>
+                                            </div>
+                                        </div>
+                                        <div style="border-radius:220px 220px 18px 18px;overflow:hidden;aspect-ratio:3/4;background:#EDEAE5;box-shadow:0 20px 50px rgba(0,0,0,.15);">
+                                            <img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section style="max-width:1280px;margin:0 auto;padding:44px 24px 20px;">
+                                    <div style="background:var(--red,#E12A20);color:#fff;border-radius:20px;overflow:hidden;display:grid;grid-template-columns:.9fr 1.1fr;">
+                                        <div style="position:relative;min-height:300px;background:#B71F17;"><img src="uploads/flyer-mulazzi.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
+                                        <div style="padding:48px 52px;display:flex;flex-direction:column;justify-content:center;">
+                                            <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.85;font-weight:700;margin-bottom:16px;">Ahora en exhibición</div>
+                                            <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.02;letter-spacing:-.02em;margin:0;">{{ currentEvent.titulo }}</h2>
+                                            <p style="font-size:18px;opacity:.92;margin:12px 0 26px;">{{ currentEvent.subtitulo }} · {{ currentEvent.dateLabel }}</p>
+                                            <div><button class="mm-btn" onClick="{{ goEventoBtn }}" style="background:#fff;color:var(--red,#E12A20);border:none;padding:14px 26px;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;">Ver detalle →</button></div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section style="max-width:1280px;margin:0 auto;padding:56px 24px 96px;">
+                                    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.02em;color:#171614;margin:0 0 30px;">Más para ver</h2>
+                                    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+                                        <sc-for list="{{ publicEvents }}" as="ev" hint-placeholder-count="3">
+                                            <div class="mm-card" onClick="{{ ev.open }}" style="cursor:pointer;border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
+                                                <div style="position:relative;aspect-ratio:16/11;overflow:hidden;background:#EDEAE5;">
+                                                    <img src="{{ ev.img }}" alt="" style="width:100%;height:100%;object-fit:cover;">
+                                                    <div style="position:absolute;top:12px;left:12px;background:#fff;color:var(--red,#E12A20);font-weight:700;font-size:12px;letter-spacing:.05em;padding:6px 11px;border-radius:8px;">{{ ev.chip }}</div>
+                                                </div>
+                                                <div style="padding:20px 22px;">
+                                                    <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:#171614;line-height:1.2;">{{ ev.titulo }}</div>
+                                                    <div style="color:#9a948c;font-size:14px;margin-top:5px;">{{ ev.lugar }}</div>
+                                                </div>
+                                            </div>
+                                        </sc-for>
+                                    </div>
+                                </section>
+                            </div>
+                        </sc-if>
+
+                        <!-- Franja info compartida -->
+                        <section style="background:#171614;color:#fff;padding:64px 0;">
+                            <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
+                                <div>
+                                    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:12px;">Horarios</div>
+                                    <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;">Martes a Domingo</div>
+                                    <div style="color:rgba(255,255,255,.6);margin-top:6px;">10 a 18 h · Lunes cerrado</div>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:12px;">Dónde estamos</div>
+                                    <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;">Av. San Martín 323</div>
+                                    <div style="color:rgba(255,255,255,.6);margin-top:6px;">Tres Arroyos, Buenos Aires</div>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:12px;">Entrada</div>
+                                    <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;">Libre y gratuita</div>
+                                    <div style="color:rgba(255,255,255,.6);margin-top:6px;">Visitas guiadas con reserva</div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </sc-if>
+
+                <!-- ===================== EVENTO ===================== -->
+                <sc-if value="{{ isEvento }}">
+                    <div data-screen-label="Detalle de evento">
+                        <div style="max-width:1280px;margin:0 auto;padding:30px 24px 0;">
+                            <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:#57534e;font-size:14px;font-weight:600;">← Volver a inicio</span>
+                        </div>
+                        <section style="max-width:1280px;margin:0 auto;padding:26px 24px 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;">
+                            <div>
+                                <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:18px;">Evento</div>
+                                <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,64px);line-height:1;letter-spacing:-.025em;color:#171614;margin:0;">{{ currentEvent.titulo }}</h1>
+                                <p style="color:#57534e;font-size:20px;margin:16px 0 30px;">{{ currentEvent.subtitulo }}</p>
+                                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+                                    <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E7E4DF;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#171614;"><span style="width:7px;height:7px;border-radius:50%;background:var(--red,#E12A20);"></span>{{
+                                    currentEvent.dateLabel }}</span>
+                                    <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E7E4DF;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#171614;">{{ currentEvent.hora }} h</span>
+                                    <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E7E4DF;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#171614;">{{ currentEvent.lugar }}</span>
+                                    <span style="display:inline-flex;align-items:center;gap:8px;background:var(--red,#E12A20);color:#fff;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;">Entrada libre</span>
+                                </div>
+                                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                                    <button class="mm-btn" style="background:var(--red,#E12A20);color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Cómo llegar</button>
+                                    <button class="mm-btn" style="background:#fff;color:#171614;border:1px solid #E7E4DF;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Compartir</button>
+                                </div>
+                            </div>
+                            <div style="border-radius:16px;overflow:hidden;background:#EDEAE5;aspect-ratio:3/4;box-shadow:0 16px 40px rgba(0,0,0,.14);">
+                                <img src="{{ currentEvent.img }}" alt="" style="width:100%;height:100%;object-fit:cover;">
+                            </div>
+                        </section>
+
+                        <section style="background:#fff;border-top:1px solid #E7E4DF;">
+                            <div style="max-width:1280px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1.6fr 1fr;gap:56px;align-items:start;">
+                                <div>
+                                    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 18px;">Sobre el evento</h3>
+                                    <sc-for list="{{ currentEvent.paras }}" as="p" hint-placeholder-count="2">
+                                        <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0 0 18px;">{{ p }}</p>
+                                    </sc-for>
+                                </div>
+                                <div style="background:#FBFAF8;border:1px solid #E7E4DF;border-radius:16px;padding:28px;">
+                                    <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:18px;">Información práctica</div>
+                                    <div style="display:flex;flex-direction:column;gap:16px;">
+                                        <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Fecha</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">{{ currentEvent.dateLabel }}</span></div>
+                                        <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Horario</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">{{ currentEvent.hora }} h</span></div>
+                                        <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Lugar</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">{{ currentEvent.lugar }}</span></div>
+                                        <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Entrada</span><span style="font-weight:600;font-size:14px;color:var(--red,#E12A20);text-align:right;">Libre y gratuita</span></div>
+                                        <div style="display:flex;justify-content:space-between;gap:14px;"><span style="color:#9a948c;font-size:14px;">Contacto</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">museo@tresarroyos.gob.ar</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section style="max-width:1280px;margin:0 auto;padding:64px 24px 90px;">
+                            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 22px;">Galería</h3>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+                                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/hall-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/museo-puerta.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                            </div>
+                        </section>
+                    </div>
+                </sc-if>
+
+                <!-- ===================== EXPOSICIONES PERMANENTES ===================== -->
+                <sc-if value="{{ isExpos }}">
+                    <div data-screen-label="Exposiciones permanentes">
+                        <section style="background:#171614;color:#fff;padding:70px 0;">
+                            <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
+                                <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:16px;">Colección</div>
+                                <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,4.6vw,68px);line-height:1;letter-spacing:-.025em;margin:0;">Exposiciones permanentes</h1>
+                                <p style="color:rgba(255,255,255,.72);font-size:clamp(16px,1.5vw,20px);max-width:56ch;margin:22px 0 0;line-height:1.55;">Muestras que forman parte del recorrido estable del museo, disponibles para visitar durante todo el año.</p>
+                            </div>
+                        </section>
+                        <section style="max-width:1280px;margin:0 auto;padding:64px 24px 94px;">
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+                                <sc-for list="{{ permanentes }}" as="ex" hint-placeholder-count="3">
+                                    <div class="mm-card" onClick="{{ ex.open }}" style="cursor:pointer;border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
+                                        <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="{{ ex.img }}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                        <div style="padding:24px 26px 28px;">
+                                            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;">{{ ex.sala }}</div>
+                                            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#171614;margin:7px 0 10px;">{{ ex.titulo }}</div>
+                                            <p style="color:#57534e;font-size:15px;line-height:1.6;margin:0;">{{ ex.desc }}</p>
+                                        </div>
+                                    </div>
+                                </sc-for>
+                            </div>
+                            <div style="margin-top:44px;background:#FBFAF8;border:1px solid #E7E4DF;border-radius:16px;padding:30px 34px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
+                                <div>
+                                    <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;">Visitas guiadas gratuitas</div>
+                                    <div style="color:#9a948c;font-size:15px;margin-top:4px;">Recorré la colección permanente con nuestro equipo. Coordiná día y horario.</div>
+                                </div>
+                                <button class="mm-btn" onClick="{{ goArroyo }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;">Conocé Arroyo Seco →</button>
+                            </div>
+                        </section>
+                    </div>
+                </sc-if>
+
+                <!-- ===================== DETALLE DE EXPOSICIÓN ===================== -->
+                <sc-if value="{{ isExpoDetail }}">
+                    <div data-screen-label="Detalle de exposición">
+                        <div style="max-width:1280px;margin:0 auto;padding:30px 24px 0;">
+                            <span class="mm-link" onClick="{{ goExpos }}" style="cursor:pointer;color:#57534e;font-size:14px;font-weight:600;">← Volver a exposiciones</span>
+                        </div>
+                        <section style="max-width:1280px;margin:0 auto;padding:26px 24px 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;">
+                            <div>
+                                <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:18px;">Exposición permanente</div>
+                                <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,64px);line-height:1;letter-spacing:-.025em;color:#171614;margin:0;">{{ currentExpo.titulo }}</h1>
+                                <p style="color:#57534e;font-size:20px;margin:16px 0 30px;">{{ currentExpo.sala }}</p>
+                                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
+                                    <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E7E4DF;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#171614;"><span style="width:7px;height:7px;border-radius:50%;background:var(--red,#E12A20);"></span>{{
+                                    currentExpo.sala }}</span>
+                                    <span style="display:inline-flex;align-items:center;gap:8px;background:var(--red,#E12A20);color:#fff;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;">Exhibición permanente</span>
+                                </div>
+                                <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                                    <button class="mm-btn" style="background:var(--red,#E12A20);color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Cómo llegar</button>
+                                    <button class="mm-btn" style="background:#fff;color:#171614;border:1px solid #E7E4DF;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Compartir</button>
+                                </div>
+                            </div>
+                            <div style="border-radius:16px;overflow:hidden;background:#EDEAE5;aspect-ratio:3/4;box-shadow:0 16px 40px rgba(0,0,0,.14);">
+                                <img src="{{ currentExpo.img }}" alt="" style="width:100%;height:100%;object-fit:cover;">
+                            </div>
+                        </section>
+
+                        <section style="background:#fff;border-top:1px solid #E7E4DF;">
+                            <div style="max-width:1280px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1.6fr 1fr;gap:56px;align-items:start;">
+                                <div>
+                                    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 18px;">Sobre la exposición</h3>
+                                    <sc-for list="{{ currentExpo.paras }}" as="p" hint-placeholder-count="2">
+                                        <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0 0 18px;">{{ p }}</p>
+                                    </sc-for>
+                                </div>
+                                <div style="background:#FBFAF8;border:1px solid #E7E4DF;border-radius:16px;padding:28px;">
+                                    <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:18px;">Información práctica</div>
+                                    <div style="display:flex;flex-direction:column;gap:16px;">
+                                        <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Sala</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">{{ currentExpo.sala }}</span></div>
+                                        <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Modalidad</span><span style="font-weight:600;font-size:14px;color:var(--red,#E12A20);text-align:right;">Exhibición permanente</span></div>
+                                        <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Entrada</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">Libre y gratuita</span></div>
+                                        <div style="display:flex;justify-content:space-between;gap:14px;"><span style="color:#9a948c;font-size:14px;">Contacto</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">museo@tresarroyos.gob.ar</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section style="max-width:1280px;margin:0 auto;padding:64px 24px 90px;">
+                            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 22px;">Galería</h3>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+                                <sc-for list="{{ currentExpo.gallery }}" as="g" hint-placeholder-count="3">
+                                    <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="{{ g }}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                </sc-for>
+                            </div>
+                        </section>
+                    </div>
+                </sc-if>
+
+                <!-- ===================== ARROYO SECO ===================== -->
+                <sc-if value="{{ isArroyo }}">
+                    <div data-screen-label="Arroyo Seco">
+                        <div style="max-width:1280px;margin:0 auto;padding:30px 24px 0;">
+                            <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:#57534e;font-size:14px;font-weight:600;">← Volver a inicio</span>
+                        </div>
+                        <section style="max-width:1280px;margin:0 auto;padding:26px 24px 56px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;">
+                            <div>
+                                <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:18px;">Yacimiento arqueológico · Distrito de Tres Arroyos</div>
+                                <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(44px,5.2vw,80px);line-height:.94;letter-spacing:-.03em;color:#171614;margin:0;">Arroyo Seco</h1>
+                                <p style="color:#3d3a35;font-size:19px;line-height:1.6;margin:24px 0 0;">Uno de los sitios arqueológicos más relevantes de la región pampeana, con evidencias de las primeras sociedades cazadoras-recolectoras que habitaron el actual distrito de Tres Arroyos.</p>
+                            </div>
+                            <div style="border-radius:220px 220px 18px 18px;overflow:hidden;aspect-ratio:3/4;background:#EDEAE5;box-shadow:0 20px 50px rgba(0,0,0,.15);">
+                                <img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
+                            </div>
+                        </section>
+
+                        <section style="background:#171614;color:#fff;padding:52px 0;">
+                            <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
+                                <div>
+                                    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:10px;">Ubicación</div>
+                                    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">Valle del arroyo</div>
+                                    <div style="color:rgba(255,255,255,.6);margin-top:6px;">Zona rural del distrito</div>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:10px;">Antigüedad</div>
+                                    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">Miles de años</div>
+                                    <div style="color:rgba(255,255,255,.6);margin-top:6px;">Ocupación humana temprana</div>
+                                </div>
+                                <div>
+                                    <div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:10px;">Hallazgos</div>
+                                    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">Restos y utensilios</div>
+                                    <div style="color:rgba(255,255,255,.6);margin-top:6px;">Enterratorios y fauna extinta</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section style="background:#fff;border-bottom:1px solid #E7E4DF;">
+                            <div style="max-width:1280px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+                                <div>
+                                    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 16px;">El sitio</h3>
+                                    <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0 0 16px;">Las excavaciones en Arroyo Seco permitieron documentar la presencia de grupos cazadores-recolectores y su relación con el ambiente pampeano. Los materiales recuperados aportan información clave sobre la vida cotidiana,
+                                        la alimentación y las prácticas funerarias de estas poblaciones.</p>
+                                    <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0;">Parte de estos hallazgos y su interpretación se integran al recorrido del museo, conectando el patrimonio arqueológico del distrito con la historia de Tres Arroyos.</p>
+                                </div>
+                                <div>
+                                    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 16px;">En el museo</h3>
+                                    <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0 0 24px;">La sala de arqueología reúne piezas y paneles que contextualizan el yacimiento y las culturas de la región. Una invitación a comprender el pasado profundo del territorio.</p>
+                                    <button class="mm-btn" onClick="{{ goExpos }}" style="background:#171614;color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Ver exposiciones permanentes →</button>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section style="max-width:1280px;margin:0 auto;padding:60px 24px 90px;">
+                            <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 22px;">Galería</h3>
+                            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
+                                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/hall-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/museo-puerta.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                            </div>
+                        </section>
+                    </div>
+                </sc-if>
+
+                <!-- ===================== VISITA ===================== -->
+                <sc-if value="{{ isVisita }}">
+                    <div data-screen-label="Visitá">
+                        <section style="position:relative;color:#fff;padding:90px 0;overflow:hidden;background:#171614;">
+                            <img src="uploads/museo-puerta.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+                            <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,22,20,.55) 0%,rgba(23,22,20,.75) 100%);"></div>
+                            <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px;">
+                                <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:16px;">El Museo de Tres Arroyos</div>
+                                <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,4.6vw,68px);line-height:1;letter-spacing:-.025em;margin:0;">¡Visitanos!</h1>
+                                <p style="color:rgba(255,255,255,.82);font-size:clamp(16px,1.5vw,20px);max-width:56ch;margin:22px 0 0;line-height:1.55;">Te esperamos en el edificio del antiguo mercado municipal, en pleno centro de Tres Arroyos.</p>
+                            </div>
+                        </section>
+
+                        <section style="max-width:1280px;margin:0 auto;padding:64px 24px 96px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;">
+                            <div>
+                                <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,3vw,34px);letter-spacing:-.02em;color:#171614;margin:0 0 28px;">Cómo llegar</h2>
+                                <div style="display:flex;flex-direction:column;gap:22px;">
+                                    <div>
+                                        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:6px;">Dirección</div>
+                                        <div style="font-size:17px;font-weight:600;color:#171614;">Av. San Martín 323</div>
+                                        <div style="color:#57534e;font-size:15px;margin-top:2px;">Tres Arroyos, Buenos Aires</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:6px;">Horarios</div>
+                                        <div style="font-size:17px;font-weight:600;color:#171614;">Martes a Domingo</div>
+                                        <div style="color:#57534e;font-size:15px;margin-top:2px;">10 a 18 h · Lunes cerrado</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:6px;">Teléfono</div>
+                                        <div style="font-size:17px;font-weight:600;color:#171614;">+54 2983 40-0000</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:6px;">Contacto</div>
+                                        <div style="font-size:17px;font-weight:600;color:#171614;">museo@tresarroyos.gob.ar</div>
+                                    </div>
+                                </div>
+                                <div style="margin-top:34px;">
+                                    <button class="mm-btn" style="background:var(--red,#E12A20);color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Cómo llegar en el mapa →</button>
+                                </div>
+                            </div>
+                            <div style="border-radius:16px;overflow:hidden;border:1px solid #E7E4DF;aspect-ratio:4/3;box-shadow:0 16px 40px rgba(0,0,0,.1);">
+                                <iframe src="https://www.google.com/maps?q=Av.+San+Mart%C3%ADn+323%2C+Tres+Arroyos%2C+Buenos+Aires%2C+Argentina&output=embed" style="width:100%;height:100%;border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación del museo en el mapa"></iframe>
+                            </div>
+                        </section>
+                    </div>
+                </sc-if>
+
+                <!-- ===================== ADMIN ===================== -->
+                <sc-if value="{{ isAdmin }}">
+                    <div data-screen-label="Panel admin" style="background:#F3F1ED;min-height:calc(100vh - 92px);display:grid;grid-template-columns:256px 1fr;">
+                        <aside style="background:#171614;color:#fff;padding:30px 20px;display:flex;flex-direction:column;gap:8px;">
+                            <div style="display:flex;align-items:center;gap:11px;padding:0 6px 22px;">
+                                <div style="width:36px;height:36px;border-radius:9px;overflow:hidden;flex:none;"><img src="uploads/logo-mulazzi-removebg-preview.png" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;line-height:1.3;">Panel de<br>gestión</div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:9px;background:rgba(255,255,255,.1);font-size:14px;font-weight:600;"><span style="width:6px;height:6px;border-radius:50%;background:var(--red,#E12A20);"></span>Eventos</div>
+                            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:9px;color:rgba(255,255,255,.6);font-size:14px;font-weight:500;">Imágenes de exposiciones</div>
+                            <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:9px;color:rgba(255,255,255,.6);font-size:14px;font-weight:500;">Textos de páginas</div>
+                            <div style="margin-top:auto;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);">
+                                <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:rgba(255,255,255,.6);font-size:14px;font-weight:600;">← Ver el sitio</span>
+                            </div>
+                        </aside>
+
+                        <div style="padding:38px 40px 60px;overflow:auto;">
+                            <!-- Eventos -->
+                            <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
+                                <div>
+                                    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;letter-spacing:-.02em;color:#171614;margin:0;">Eventos</h2>
+                                    <p style="color:#9a948c;font-size:15px;margin:6px 0 0;">Gestioná la agenda del museo y su estado de publicación.</p>
+                                </div>
+                                <button class="mm-btn" onClick="{{ newEvent }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">+ Nuevo evento</button>
+                            </div>
+
+                            <div style="background:#fff;border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;">
+                                <div style="display:grid;grid-template-columns:2.4fr 1.1fr 1fr 1.2fr;gap:16px;padding:15px 24px;border-bottom:1px solid #E7E4DF;background:#FBFAF8;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9a948c;font-weight:700;">
+                                    <div>Evento</div>
+                                    <div>Fecha</div>
+                                    <div>Estado</div>
+                                    <div style="text-align:right;">Acciones</div>
+                                </div>
+                                <sc-for list="{{ allEvents }}" as="ev" hint-placeholder-count="4">
+                                    <div style="display:grid;grid-template-columns:2.4fr 1.1fr 1fr 1.2fr;gap:16px;padding:18px 24px;border-bottom:1px solid #F0EDE8;align-items:center;">
+                                        <div style="display:flex;align-items:center;gap:14px;">
+                                            <div style="width:46px;height:46px;border-radius:9px;overflow:hidden;flex:none;background:#EDEAE5;"><img src="{{ ev.img }}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                            <div>
+                                                <div style="font-weight:600;font-size:15px;color:#171614;line-height:1.2;">{{ ev.titulo }}</div>
+                                                <div style="color:#9a948c;font-size:13px;margin-top:2px;">{{ ev.subtitulo }}</div>
+                                            </div>
+                                        </div>
+                                        <div style="font-size:14px;color:#57534e;font-weight:500;">{{ ev.dateLabel }}</div>
+                                        <div><span style="{{ ev.tagStyle }}"><span style="{{ ev.dotStyle }}"></span>{{ ev.estado }}</span>
+                                        </div>
+                                        <div style="display:flex;gap:8px;justify-content:flex-end;align-items:center;">
+                                            <button class="mm-btn" onClick="{{ ev.edit }}" style="background:#F3F1ED;color:#171614;border:none;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Editar</button>
+                                            <button class="mm-btn" onClick="{{ ev.toggle }}" style="background:transparent;color:var(--red,#E12A20);border:1px solid #E7E4DF;padding:8px 12px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">{{ ev.toggleLabel }}</button>
+                                        </div>
+                                    </div>
+                                </sc-for>
+                            </div>
+
+                            <!-- Imágenes -->
+                            <div style="margin-top:46px;margin-bottom:22px;">
+                                <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;letter-spacing:-.02em;color:#171614;margin:0;">Imágenes de exposiciones</h2>
+                                <p style="color:#9a948c;font-size:15px;margin:6px 0 0;">Subí y actualizá las imágenes que se muestran en las salas y en el sitio.</p>
+                            </div>
+                            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+                                <div style="border:2px dashed #D4CFC7;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;min-height:200px;cursor:pointer;background:#fff;">
+                                    <div style="width:44px;height:44px;border-radius:50%;background:#F3F1ED;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--red,#E12A20);margin-bottom:12px;">+</div>
+                                    <div style="font-weight:600;font-size:14px;color:#171614;">Subir imagen</div>
+                                    <div style="font-size:12px;color:#9a948c;margin-top:5px;font-family:'Public Sans',monospace;">JPG · PNG · WebP</div>
+                                </div>
+                                <sc-for list="{{ imagenes }}" as="im" hint-placeholder-count="4">
+                                    <div class="mm-card" style="border:1px solid #E7E4DF;border-radius:14px;overflow:hidden;background:#fff;">
+                                        <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="{{ im.img }}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                        <div style="padding:14px 16px;">
+                                            <div style="font-weight:600;font-size:14px;color:#171614;">{{ im.titulo }}</div>
+                                            <div style="font-size:12px;color:#9a948c;margin-top:2px;">{{ im.sala }}</div>
+                                            <div style="display:flex;gap:14px;margin-top:12px;">
+                                                <span class="mm-link" style="cursor:pointer;font-size:13px;font-weight:600;color:#57534e;">Reemplazar</span>
+                                                <span class="mm-link" style="cursor:pointer;font-size:13px;font-weight:600;color:#9a948c;">Eliminar</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </sc-for>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal formulario -->
+                    <sc-if value="{{ showForm }}">
+                        <div style="position:fixed;inset:0;background:rgba(23,22,20,.55);z-index:80;display:flex;align-items:flex-start;justify-content:center;padding:44px 20px;overflow:auto;backdrop-filter:blur(2px);">
+                            <div style="background:#fff;border-radius:18px;width:100%;max-width:580px;padding:32px;box-shadow:0 24px 70px rgba(0,0,0,.3);">
+                                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+                                    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;color:#171614;margin:0;">{{ formTitle }}</h3>
+                                    <button onClick="{{ cancel }}" style="background:#F3F1ED;border:none;width:34px;height:34px;border-radius:9px;font-size:18px;color:#57534e;cursor:pointer;">✕</button>
+                                </div>
+                                <div style="display:flex;flex-direction:column;gap:18px;">
+                                    <div>
+                                        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Título</label>
+                                        <input value="{{ draft.titulo }}" onChange="{{ onTitulo }}" placeholder="Nombre del evento" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
+                                    </div>
+                                    <div>
+                                        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Subtítulo</label>
+                                        <input value="{{ draft.subtitulo }}" onChange="{{ onSubtitulo }}" placeholder="Breve bajada" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
+                                    </div>
+                                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                                        <div>
+                                            <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Fecha</label>
+                                            <input type="date" value="{{ draft.fecha }}" onChange="{{ onFecha }}" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
+                                        </div>
+                                        <div>
+                                            <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Hora</label>
+                                            <input type="time" value="{{ draft.hora }}" onChange="{{ onHora }}" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Lugar</label>
+                                        <input value="{{ draft.lugar }}" onChange="{{ onLugar }}" placeholder="Sala o dirección" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
+                                    </div>
+                                    <div>
+                                        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Descripción</label>
+                                        <textarea value="{{ draft.desc }}" onChange="{{ onDesc }}" rows="4" placeholder="Detalle del evento" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;resize:vertical;line-height:1.5;"></textarea>
+                                    </div>
+                                    <div>
+                                        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Estado</label>
+                                        <div style="display:flex;gap:10px;">
+                                            <button onClick="{{ setPub }}" style="{{ pubStyle }}">Publicado</button>
+                                            <button onClick="{{ setBor }}" style="{{ borStyle }}">Borrador</button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Imagen</label>
+                                        <div style="border:2px dashed #D4CFC7;border-radius:11px;padding:20px;text-align:center;cursor:pointer;background:#FBFAF8;">
+                                            <div style="font-weight:600;font-size:14px;color:#171614;">Arrastrá una imagen o hacé clic para subir</div>
+                                            <div style="font-size:12px;color:#9a948c;margin-top:4px;font-family:'Public Sans',monospace;">JPG · PNG · WebP · máx 5 MB</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:28px;">
+                                    <button class="mm-btn" onClick="{{ cancel }}" style="background:#fff;color:#57534e;border:1px solid #E7E4DF;padding:12px 22px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">Cancelar</button>
+                                    <button class="mm-btn" onClick="{{ save }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">Guardar evento</button>
+                                </div>
+                            </div>
+                        </div>
+                    </sc-if>
+                </sc-if>
+
+            </main>
+
+            <!-- Script de popap chatbot -->
+            <script type="module">
+                import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js'; createChat({ webhookUrl: 'https://n8n-gestor-redes-n8n.gxcvuw.easypanel.host/webhook/webhook/1ce27269-888b-43bc-993c-79c09dbfc734/chat', mode: 'window', showWelcomeScreen:
+                false, chatInputKey: 'chatInput', chatSessionKey: 'sessionId', initialMessages: [ 'Hola! 👋 ¿En qué puedo ayudarte?' ], i18n: { en: { title: 'Renovadas', subtitle: 'Chateá con nosotros', inputPlaceholder: 'Escribí tu mensaje...', getStarted:
+                'Nueva conversación', }, }, });
+            </script>
+
+
+
+
+
+            <!-- Footer (solo sitio público) -->
+            <sc-if value="{{ isPublic }}" hint-placeholder-val="{{ true }}">
+                <footer style="background:#171614;color:#fff;padding:60px 0 28px;">
+                    <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;">
+                        <div>
+                            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                                <div style="width:42px;height:42px;border-radius:10px;overflow:hidden;"><img src="uploads/logo-mulazzi-removebg-preview.png" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
+                                <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;">MUSEO MULAZZI</div>
+                            </div>
+                            <p style="color:rgba(255,255,255,.55);font-size:14px;line-height:1.6;max-width:34ch;margin:0;">Museo Municipal José A. Mulazzi. El patrimonio histórico, arqueológico y artístico de Tres Arroyos.</p>
+                        </div>
+                        <div>
+                            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:14px;">Visitá</div>
+                            <div style="color:rgba(255,255,255,.75);font-size:14px;line-height:2;">Av. San Martín 323<br>Tres Arroyos, BA<br>Mar a Dom · 10 a 18 h</div>
+                        </div>
+                        <div>
+                            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:14px;">Explorar</div>
+                            <div style="display:flex;flex-direction:column;gap:9px;font-size:14px;">
+                                <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:rgba(255,255,255,.75);">Exposiciones</span>
+                                <span class="mm-link" onClick="{{ goEventoBtn }}" style="cursor:pointer;color:rgba(255,255,255,.75);">Agenda</span>
+                                <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:rgba(255,255,255,.75);">El museo</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:14px;">Contacto</div>
+                            <div style="color:rgba(255,255,255,.75);font-size:14px;line-height:2;">museo@tresarroyos.gob.ar<br>+54 2983 40-0000<br>@museomulazzi</div>
+                        </div>
+                    </div>
+                    <div style="max-width:1280px;margin:36px auto 0;padding:22px 24px 0;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.4);font-size:13px;">
+                        <span>© 2026 Museo Municipal José A. Mulazzi · Tres Arroyos</span>
+                        <span>Municipalidad de Tres Arroyos</span>
+                    </div>
+                </footer>
+            </sc-if>
+
         </div>
-        <button class="mm-btn" onClick="{{ goEventoBtn }}" style="background:#171614;color:#fff;border:none;padding:14px 26px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Ver detalle del evento →</button>
-      </div>
-    </div>
-  </section>
+    </x-dc>
+    <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E12A20&quot;,&quot;options&quot;:[&quot;#E12A20&quot;,&quot;#1f6feb&quot;,&quot;#2f8a5b&quot;,&quot;#171614&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;showToolbar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Vista previa&quot;},&quot;openTo&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;evento&quot;,&quot;admin&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Vista previa&quot;}}">
+        class Component extends DCLogic { months = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC']; monthsFull = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre']; state
+        = { view: 'home', variant: 'A', currentEventId: 1, currentExpoId: 1, editingId: null, draft: this.blank(), events: [ {id:1,titulo:'Muestra colectiva de Arte',subtitulo:'Mes Internacional de la Mujer',fecha:'2026-03-12',hora:'19:00',lugar:'Av.
+        San Martín 323',estado:'Publicado',img:'uploads/flyer-mulazzi.webp',desc:'El Museo Mulazzi presenta una muestra colectiva que reúne obras de artistas de Tres Arroyos en el marco del Mes Internacional de la Mujer. Pintura, fotografía y textil conviven
+        en las salas del antiguo mercado municipal.\n\nLa apertura contará con la presencia de las artistas y una visita guiada por la curaduría. La entrada es libre y gratuita durante todo el período de exhibición.'}, {id:2,titulo:'Ciclo de charlas:
+        Historia local',subtitulo:'Encuentros con historiadores',fecha:'2026-03-20',hora:'18:30',lugar:'Sala de conferencias',estado:'Borrador',img:'uploads/hall-mulazzi.jpg',desc:'Un ciclo de tres encuentros para recorrer la historia de la ciudad desde
+        su fundación, con la participación de historiadores y vecinos.'}, {id:3,titulo:'Culturas Andinas',subtitulo:'Muestra permanente de arqueología',fecha:'2026-04-05',hora:'10:00',lugar:'Sala de arqueología',estado:'Publicado',img:'uploads/muestra-arqueologia-mulazzi.jpg',desc:'Una
+        selección de piezas que documentan las culturas andinas y su legado: cerámica, textiles y herramientas en diálogo con el territorio.'}, {id:4,titulo:'La Noche de los Museos',subtitulo:'Apertura nocturna especial',fecha:'2026-05-18',hora:'20:00',lugar:'Todo
+        el edificio',estado:'Borrador',img:'uploads/museo-puerta.jpg',desc:'Una noche para recorrer el museo con actividades especiales, música en vivo y visitas guiadas por todas las salas.'} ], imagenes: [ {id:1,titulo:'Hall central',sala:'Sala principal',img:'uploads/hall-mulazzi.jpg'},
+        {id:2,titulo:'Culturas Andinas',sala:'Arqueología',img:'uploads/muestra-arqueologia-mulazzi.jpg'}, {id:3,titulo:'Fachada histórica',sala:'Ingreso',img:'uploads/museo-puerta.jpg'}, {id:4,titulo:'Muestra colectiva',sala:'Arte temporario',img:'uploads/flyer-mulazzi.webp'}
+        ] }; blank(){ return {titulo:'',subtitulo:'',fecha:'',hora:'19:00',lugar:'Av. San Martín 323',estado:'Borrador',img:'',desc:''}; } componentDidMount(){ if(this.props.openTo && this.props.openTo!==this.state.view) this.setState({view:this.props.openTo});
+        } fmt(iso){ if(!iso||iso.indexOf('-')
+        <0) return {dd: '--',mon: '',monFull: '',yyyy: ''}; const [y,m,d]=iso.split( '-').map(Number); return {dd:String(d).padStart(2, '0'),mon:this.months[m-1],monFull:this.monthsFull[m-1],yyyy:y}; } hexToRgba(hex,a){ hex=(hex|| '#E12A20').replace( '#', '');
+            if(hex.length===3) hex=hex.split( '').map(c=>c+c).join(''); const n=parseInt(hex,16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; } setView(v){ this.setState({view:v,editingId:null}); if(typeof window!=='undefined') window.scrollTo(0,0); } goEvento(id){ this.setState({view:'evento',currentEventId:id});
+            if(typeof window!=='undefined') window.scrollTo(0,0); } goExpoDetail(id){ this.setState({view:'expo-detail',currentExpoId:id}); if(typeof window!=='undefined') window.scrollTo(0,0); } newEvent(){ this.setState({editingId:'new',draft:this.blank()});
+            } editEvent(id){ const e=this.state.events.find(x=>x.id===id); this.setState({editingId:id,draft:{...e}}); } cancel(){ this.setState({editingId:null}); } save(){ this.setState(s=>{ const d=s.draft; if(!d.titulo) return {editingId:null}; if(s.editingId==='new'){
+            const id=Math.max(0,...s.events.map(e=>e.id))+1; return {events:[...s.events,{...d,id,img:d.img||'uploads/hall-mulazzi.jpg'}],editingId:null}; } return {events:s.events.map(e=>e.id===s.editingId?{...d}:e),editingId:null}; }); } toggleEstado(id){
+            this.setState(s=>({events:s.events.map(e=>e.id===id?{...e,estado:e.estado==='Publicado'?'Borrador':'Publicado'}:e)})); } h(f){ this._h=this._h||{}; if(!this._h[f]) this._h[f]=e=>{ const v=e.target.value; this.setState(s=>({draft:{...s.draft,[f]:v}}));
+            }; return this._h[f]; } tab(a){ return {fontFamily:"'Public Sans',sans-serif",border:'none',cursor:'pointer',padding:'6px 14px',borderRadius:'7px',fontSize:'13px',fontWeight:600,whiteSpace:'nowrap',background:a?'#fff':'transparent',color:a?'#171614':'rgba(255,255,255,.6)'};
+            } decorate(e,ac){ const f=this.fmt(e.fecha); const pub=e.estado==='Publicado'; return {...e,...f, chip:f.dd+' '+f.mon, dateLabel:parseInt(f.dd,10)+' de '+f.monFull+', '+f.yyyy, open:()=>this.goEvento(e.id), edit:()=>this.editEvent(e.id), toggle:()=>this.toggleEstado(e.id),
+            toggleLabel:pub?'Ocultar':'Publicar', isPub:pub, tagStyle:{padding:'4px 11px',borderRadius:'999px',fontSize:'12px',fontWeight:600,display:'inline-flex',alignItems:'center',gap:'6px',background:pub?this.hexToRgba(ac,.1):'#EDEAE5',color:pub?'#B71F17':'#8a857e'},
+            dotStyle:{width:'6px',height:'6px',borderRadius:'50%',background:pub?ac:'#B4AEA6'} }; } renderVals(){ const s=this.state; const ac=this.props.accent||'#E12A20'; const all=s.events.map(e=>this.decorate(e,ac)); const pub=all.filter(e=>e.isPub);
+            const cur0=s.events.find(e=>e.id===s.currentEventId)||s.events[0]; const cur=this.decorate(cur0,ac); cur.paras=(cur0.desc||'').split('\n\n'); const isPubDraft=s.draft.estado==='Publicado'; const seg={flex:1,padding:'11px',borderRadius:'9px',border:'1px
+            solid',cursor:'pointer',fontWeight:600,fontSize:'14px',fontFamily:"'Public Sans',sans-serif"}; const permanentes=[ {id:1,titulo:'Culturas Andinas',sala:'Sala de Arqueología',img:'uploads/muestra-arqueologia-mulazzi.jpg',desc:'Cerámica, textiles
+            y herramientas de los pueblos originarios de la región andina.',paras:['La muestra reúne una selección de piezas que documentan las culturas andinas y su legado: cerámica, textiles y herramientas en diálogo con el territorio.','El recorrido
+            conecta estos objetos con la historia del poblamiento americano, poniendo en contexto las técnicas y los usos cotidianos y rituales de cada pieza.'],gallery:['uploads/muestra-arqueologia-mulazzi.jpg','uploads/hall-mulazzi.jpg','uploads/museo-puerta.jpg']},
+            {id:2,titulo:'Tres Arroyos, nuestra historia',sala:'Entrepiso',img:'uploads/hall-mulazzi.jpg',desc:'Recorrido fotográfico y documental por la historia de la ciudad y sus instituciones.',paras:['Un recorrido fotográfico y documental por la
+            historia de la ciudad y sus instituciones, desde la fundación hasta la actualidad.','Fotografías, actas y objetos cotidianos narran el crecimiento de Tres Arroyos y la vida de quienes la habitaron.'],gallery:['uploads/hall-mulazzi.jpg','uploads/museo-puerta.jpg','uploads/muestra-arqueologia-mulazzi.jpg']},
+            {id:3,titulo:'El antiguo Mercado',sala:'Fachada e ingreso',img:'uploads/museo-puerta.jpg',desc:'La historia del edificio del antiguo mercado municipal que hoy alberga al museo.',paras:['La historia del edificio del antiguo mercado municipal
+            que hoy alberga al museo, desde su construcción hasta su reconversión cultural.','Planos, fotografías de época y testimonios de vecinos reconstruyen la vida del mercado antes de convertirse en museo.'],gallery:['uploads/museo-puerta.jpg','uploads/hall-mulazzi.jpg','uploads/muestra-arqueologia-mulazzi.jpg']}
+            ]; const permanentesDecorated=permanentes.map(p=>({...p, open:()=>this.goExpoDetail(p.id)})); const curExpo0=permanentes.find(p=>p.id===s.currentExpoId)||permanentes[0]; const currentExpo={...curExpo0}; return { rootVars:{'--red':ac,fontFamily:"'Public
+            Sans',sans-serif",color:'#171614',background:'#FBFAF8',minHeight:'100vh'}, showToolbar:this.props.showToolbar!==false, permanentes:permanentesDecorated, currentExpo, isExpos:s.view==='expos', isArroyo:s.view==='arroyo', isVisita:s.view==='visita',
+            isExpoDetail:s.view==='expo-detail', goExpos:()=>this.setView('expos'), goArroyo:()=>this.setView('arroyo'), goVisita:()=>this.setView('visita'), view:s.view, isHome:s.view==='home', isEvento:s.view==='evento', isAdmin:s.view==='admin', isPublic:s.view!=='admin',
+            isA:s.variant==='A', isB:s.variant==='B', isC:s.variant==='C', goHome:()=>this.setView('home'), goAdmin:()=>this.setView('admin'), goEventoBtn:()=>this.goEvento(s.currentEventId), setVA:()=>this.setState({variant:'A'}), setVB:()=>this.setState({variant:'B'}),
+            setVC:()=>this.setState({variant:'C'}), tHome:this.tab(s.view==='home'), tEvento:this.tab(s.view==='evento'), tAdmin:this.tab(s.view==='admin'), vA:this.tab(s.variant==='A'), vB:this.tab(s.variant==='B'), vC:this.tab(s.variant==='C'), allEvents:all,
+            publicEvents:pub, currentEvent:cur, imagenes:s.imagenes, newEvent:()=>this.newEvent(), showForm:s.editingId!==null, formTitle:s.editingId==='new'?'Nuevo evento':'Editar evento', draft:s.draft, onTitulo:this.h('titulo'), onSubtitulo:this.h('subtitulo'),
+            onFecha:this.h('fecha'), onHora:this.h('hora'), onLugar:this.h('lugar'), onDesc:this.h('desc'), setPub:()=>this.setState(st=>({draft:{...st.draft,estado:'Publicado'}})), setBor:()=>this.setState(st=>({draft:{...st.draft,estado:'Borrador'}})),
+            pubStyle:{...seg,background:isPubDraft?ac:'#fff',color:isPubDraft?'#fff':'#57534e',borderColor:isPubDraft?ac:'#E7E4DF'}, borStyle:{...seg,background:!isPubDraft?'#171614':'#fff',color:!isPubDraft?'#fff':'#57534e',borderColor:!isPubDraft?'#171614':'#E7E4DF'},
+            save:()=>this.save(), cancel:()=>this.cancel() }; } }
+    </script>
 
-  <section style="max-width:1280px;margin:0 auto;padding:80px 24px 96px;">
-    <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:12px;">
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.02em;color:#171614;margin:0;">Agenda</h2>
-      <span style="color:#9a948c;font-size:14px;">Actividades y muestras vigentes</span>
-    </div>
-    <sc-for list="{{ publicEvents }}" as="ev" hint-placeholder-count="3">
-      <div class="mm-row" onClick="{{ ev.open }}" style="cursor:pointer;padding:26px 8px;border-top:1px solid #E7E4DF;display:grid;grid-template-columns:130px 1fr auto;gap:26px;align-items:center;">
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--red,#E12A20);font-size:13.5px;letter-spacing:.06em;">{{ ev.chip }}</div>
-        <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:21px;color:#171614;line-height:1.15;">{{ ev.titulo }}</div>
-          <div style="color:#9a948c;font-size:14px;margin-top:3px;">{{ ev.lugar }}</div>
-        </div>
-        <div class="mm-arr" style="font-size:22px;color:#C9C4BC;">→</div>
-      </div>
-    </sc-for>
-  </section>
-</div>
-</sc-if>
 
-<!-- DIRECCIÓN B · Institucional -->
-<sc-if value="{{ isB }}">
-<div>
-  <section style="display:grid;grid-template-columns:1fr 1fr;min-height:80vh;">
-    <div style="background:var(--red,#E12A20);color:#fff;padding:60px 56px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;">
-      <div style="width:66px;height:66px;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18);"><img src="uploads/logo-mulazzi-removebg-preview.png" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div>
-        <div style="font-size:12px;letter-spacing:.24em;text-transform:uppercase;opacity:.85;font-weight:600;margin-bottom:16px;">Museo Municipal</div>
-        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,4.6vw,74px);line-height:.95;letter-spacing:-.02em;margin:0;">José A.<br>Mulazzi</h1>
-        <p style="font-size:18px;opacity:.92;margin:22px 0 0;max-width:34ch;line-height:1.5;">Patrimonio, historia y arte de Tres Arroyos, reunidos en el antiguo mercado municipal.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;border-top:1px solid rgba(255,255,255,.28);padding-top:26px;">
-        <div>
-          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;font-weight:600;margin-bottom:6px;">Horarios</div>
-          <div style="font-size:15px;font-weight:500;">Mar a Dom · 10 a 18 h</div>
-        </div>
-        <div>
-          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.7;font-weight:600;margin-bottom:6px;">Dirección</div>
-          <div style="font-size:15px;font-weight:500;">Av. San Martín 323</div>
-        </div>
-      </div>
-    </div>
-    <div style="position:relative;background:#171614;min-height:340px;">
-      <img src="uploads/museo-puerta.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-    </div>
-  </section>
 
-  <section style="background:#FBFAF8;padding:80px 0;">
-    <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
-      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:8px;">Agenda</div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.02em;color:#171614;margin:0 0 30px;">Próximas actividades</h2>
-      <sc-for list="{{ publicEvents }}" as="ev" hint-placeholder-count="3">
-        <div class="mm-row" onClick="{{ ev.open }}" style="cursor:pointer;background:#fff;border:1px solid #E7E4DF;border-radius:14px;padding:22px 26px;margin-bottom:14px;display:grid;grid-template-columns:88px 1fr auto;gap:26px;align-items:center;">
-          <div style="text-align:center;background:#FBFAF8;border-radius:10px;padding:10px 0;">
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;line-height:1;color:#171614;">{{ ev.dd }}</div>
-            <div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--red,#E12A20);margin-top:3px;">{{ ev.mon }}</div>
-          </div>
-          <div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;">{{ ev.titulo }}</div>
-            <div style="color:#9a948c;font-size:14px;margin-top:3px;">{{ ev.subtitulo }} · {{ ev.lugar }}</div>
-          </div>
-          <div class="mm-arr" style="font-size:22px;color:#C9C4BC;">→</div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-
-  <section style="max-width:1280px;margin:0 auto;padding:84px 24px 96px;">
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.02em;color:#171614;margin:0 0 32px;">Recorré las salas</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
-      <div class="mm-sala" style="border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
-        <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="uploads/hall-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="padding:22px 24px;"><div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;">Historia</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;margin-top:6px;">Hall central</div></div>
-      </div>
-      <div class="mm-sala" style="border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
-        <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="padding:22px 24px;"><div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;">Arqueología</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;margin-top:6px;">Culturas Andinas</div></div>
-      </div>
-      <div class="mm-sala" style="border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
-        <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="uploads/flyer-mulazzi.webp" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="padding:22px 24px;"><div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;">Arte</div><div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;margin-top:6px;">Muestras temporarias</div></div>
-      </div>
-    </div>
-  </section>
-</div>
-</sc-if>
-
-<!-- DIRECCIÓN C · Expresiva -->
-<sc-if value="{{ isC }}">
-<div>
-  <section style="position:relative;background:#FBFAF8;padding:72px 0 40px;overflow:hidden;">
-    <div style="position:absolute;top:-90px;right:-70px;width:320px;height:320px;border-radius:50%;border:34px solid var(--red,#E12A20);opacity:.12;"></div>
-    <div style="position:absolute;top:20px;right:120px;width:150px;height:150px;border-radius:50%;border:20px solid var(--red,#E12A20);opacity:.16;"></div>
-    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;">
-      <div>
-        <div style="font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:22px;">Museo Municipal · Tres Arroyos</div>
-        <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(52px,8vw,116px);line-height:.86;letter-spacing:-.035em;margin:0;color:#171614;">Museo<br><span style="color:var(--red,#E12A20);">Mulazzi</span></h1>
-        <p style="color:#57534e;font-size:clamp(16px,1.5vw,20px);max-width:44ch;margin:28px 0 34px;line-height:1.55;">Un recorrido por la historia, la arqueología y el arte de la ciudad. Entrada libre y gratuita, todo el año.</p>
-        <div style="display:flex;gap:13px;flex-wrap:wrap;">
-          <button class="mm-btn" onClick="{{ goEventoBtn }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:15px 27px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Qué visitar</button>
-          <button class="mm-btn" onClick="{{ goHome }}" style="background:transparent;color:#171614;border:1px solid #171614;padding:15px 27px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">El museo</button>
-        </div>
-      </div>
-      <div style="border-radius:220px 220px 18px 18px;overflow:hidden;aspect-ratio:3/4;background:#EDEAE5;box-shadow:0 20px 50px rgba(0,0,0,.15);">
-        <img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
-      </div>
-    </div>
-  </section>
-
-  <section style="max-width:1280px;margin:0 auto;padding:44px 24px 20px;">
-    <div style="background:var(--red,#E12A20);color:#fff;border-radius:20px;overflow:hidden;display:grid;grid-template-columns:.9fr 1.1fr;">
-      <div style="position:relative;min-height:300px;background:#B71F17;"><img src="uploads/flyer-mulazzi.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></div>
-      <div style="padding:48px 52px;display:flex;flex-direction:column;justify-content:center;">
-        <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.85;font-weight:700;margin-bottom:16px;">Ahora en exhibición</div>
-        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.02;letter-spacing:-.02em;margin:0;">{{ currentEvent.titulo }}</h2>
-        <p style="font-size:18px;opacity:.92;margin:12px 0 26px;">{{ currentEvent.subtitulo }} · {{ currentEvent.dateLabel }}</p>
-        <div><button class="mm-btn" onClick="{{ goEventoBtn }}" style="background:#fff;color:var(--red,#E12A20);border:none;padding:14px 26px;border-radius:11px;font-size:15px;font-weight:700;cursor:pointer;">Ver detalle →</button></div>
-      </div>
-    </div>
-  </section>
-
-  <section style="max-width:1280px;margin:0 auto;padding:56px 24px 96px;">
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,3vw,42px);letter-spacing:-.02em;color:#171614;margin:0 0 30px;">Más para ver</h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
-      <sc-for list="{{ publicEvents }}" as="ev" hint-placeholder-count="3">
-        <div class="mm-card" onClick="{{ ev.open }}" style="cursor:pointer;border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
-          <div style="position:relative;aspect-ratio:16/11;overflow:hidden;background:#EDEAE5;">
-            <img src="{{ ev.img }}" alt="" style="width:100%;height:100%;object-fit:cover;">
-            <div style="position:absolute;top:12px;left:12px;background:#fff;color:var(--red,#E12A20);font-weight:700;font-size:12px;letter-spacing:.05em;padding:6px 11px;border-radius:8px;">{{ ev.chip }}</div>
-          </div>
-          <div style="padding:20px 22px;">
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:19px;color:#171614;line-height:1.2;">{{ ev.titulo }}</div>
-            <div style="color:#9a948c;font-size:14px;margin-top:5px;">{{ ev.lugar }}</div>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-  </section>
-</div>
-</sc-if>
-
-<!-- Franja info compartida -->
-<section style="background:#171614;color:#fff;padding:64px 0;">
-  <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
-    <div><div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:12px;">Horarios</div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;">Martes a Domingo</div><div style="color:rgba(255,255,255,.6);margin-top:6px;">10 a 18 h · Lunes cerrado</div></div>
-    <div><div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:12px;">Dónde estamos</div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;">Av. San Martín 323</div><div style="color:rgba(255,255,255,.6);margin-top:6px;">Tres Arroyos, Buenos Aires</div></div>
-    <div><div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:12px;">Entrada</div><div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;">Libre y gratuita</div><div style="color:rgba(255,255,255,.6);margin-top:6px;">Visitas guiadas con reserva</div></div>
-  </div>
-</section>
-
-</div>
-</sc-if>
-
-<!-- ===================== EVENTO ===================== -->
-<sc-if value="{{ isEvento }}">
-<div data-screen-label="Detalle de evento">
-  <div style="max-width:1280px;margin:0 auto;padding:30px 24px 0;">
-    <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:#57534e;font-size:14px;font-weight:600;">← Volver a inicio</span>
-  </div>
-  <section style="max-width:1280px;margin:0 auto;padding:26px 24px 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;">
-    <div>
-      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:18px;">Evento</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,64px);line-height:1;letter-spacing:-.025em;color:#171614;margin:0;">{{ currentEvent.titulo }}</h1>
-      <p style="color:#57534e;font-size:20px;margin:16px 0 30px;">{{ currentEvent.subtitulo }}</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
-        <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E7E4DF;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#171614;"><span style="width:7px;height:7px;border-radius:50%;background:var(--red,#E12A20);"></span>{{ currentEvent.dateLabel }}</span>
-        <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E7E4DF;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#171614;">{{ currentEvent.hora }} h</span>
-        <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E7E4DF;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#171614;">{{ currentEvent.lugar }}</span>
-        <span style="display:inline-flex;align-items:center;gap:8px;background:var(--red,#E12A20);color:#fff;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;">Entrada libre</span>
-      </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <button class="mm-btn" style="background:var(--red,#E12A20);color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Cómo llegar</button>
-        <button class="mm-btn" style="background:#fff;color:#171614;border:1px solid #E7E4DF;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Compartir</button>
-      </div>
-    </div>
-    <div style="border-radius:16px;overflow:hidden;background:#EDEAE5;aspect-ratio:3/4;box-shadow:0 16px 40px rgba(0,0,0,.14);">
-      <img src="{{ currentEvent.img }}" alt="" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-  </section>
-
-  <section style="background:#fff;border-top:1px solid #E7E4DF;">
-    <div style="max-width:1280px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1.6fr 1fr;gap:56px;align-items:start;">
-      <div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 18px;">Sobre el evento</h3>
-        <sc-for list="{{ currentEvent.paras }}" as="p" hint-placeholder-count="2">
-          <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0 0 18px;">{{ p }}</p>
-        </sc-for>
-      </div>
-      <div style="background:#FBFAF8;border:1px solid #E7E4DF;border-radius:16px;padding:28px;">
-        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:18px;">Información práctica</div>
-        <div style="display:flex;flex-direction:column;gap:16px;">
-          <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Fecha</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">{{ currentEvent.dateLabel }}</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Horario</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">{{ currentEvent.hora }} h</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Lugar</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">{{ currentEvent.lugar }}</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Entrada</span><span style="font-weight:600;font-size:14px;color:var(--red,#E12A20);text-align:right;">Libre y gratuita</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;"><span style="color:#9a948c;font-size:14px;">Contacto</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">museo@tresarroyos.gob.ar</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="max-width:1280px;margin:0 auto;padding:64px 24px 90px;">
-    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 22px;">Galería</h3>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/hall-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/museo-puerta.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-    </div>
-  </section>
-</div>
-</sc-if>
-
-<!-- ===================== EXPOSICIONES PERMANENTES ===================== -->
-<sc-if value="{{ isExpos }}">
-<div data-screen-label="Exposiciones permanentes">
-  <section style="background:#171614;color:#fff;padding:70px 0;">
-    <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
-      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:16px;">Colección</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,4.6vw,68px);line-height:1;letter-spacing:-.025em;margin:0;">Exposiciones permanentes</h1>
-      <p style="color:rgba(255,255,255,.72);font-size:clamp(16px,1.5vw,20px);max-width:56ch;margin:22px 0 0;line-height:1.55;">Muestras que forman parte del recorrido estable del museo, disponibles para visitar durante todo el año.</p>
-    </div>
-  </section>
-  <section style="max-width:1280px;margin:0 auto;padding:64px 24px 94px;">
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
-      <sc-for list="{{ permanentes }}" as="ex" hint-placeholder-count="3">
-        <div class="mm-card" onClick="{{ ex.open }}" style="cursor:pointer;border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;background:#fff;">
-          <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="{{ ex.img }}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-          <div style="padding:24px 26px 28px;">
-            <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;">{{ ex.sala }}</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:22px;color:#171614;margin:7px 0 10px;">{{ ex.titulo }}</div>
-            <p style="color:#57534e;font-size:15px;line-height:1.6;margin:0;">{{ ex.desc }}</p>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-    <div style="margin-top:44px;background:#FBFAF8;border:1px solid #E7E4DF;border-radius:16px;padding:30px 34px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;">
-      <div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px;color:#171614;">Visitas guiadas gratuitas</div>
-        <div style="color:#9a948c;font-size:15px;margin-top:4px;">Recorré la colección permanente con nuestro equipo. Coordiná día y horario.</div>
-      </div>
-      <button class="mm-btn" onClick="{{ goArroyo }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;white-space:nowrap;">Conocé Arroyo Seco →</button>
-    </div>
-  </section>
-</div>
-</sc-if>
-
-<!-- ===================== DETALLE DE EXPOSICIÓN ===================== -->
-<sc-if value="{{ isExpoDetail }}">
-<div data-screen-label="Detalle de exposición">
-  <div style="max-width:1280px;margin:0 auto;padding:30px 24px 0;">
-    <span class="mm-link" onClick="{{ goExpos }}" style="cursor:pointer;color:#57534e;font-size:14px;font-weight:600;">← Volver a exposiciones</span>
-  </div>
-  <section style="max-width:1280px;margin:0 auto;padding:26px 24px 60px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start;">
-    <div>
-      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:18px;">Exposición permanente</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(36px,4.4vw,64px);line-height:1;letter-spacing:-.025em;color:#171614;margin:0;">{{ currentExpo.titulo }}</h1>
-      <p style="color:#57534e;font-size:20px;margin:16px 0 30px;">{{ currentExpo.sala }}</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;">
-        <span style="display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #E7E4DF;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;color:#171614;"><span style="width:7px;height:7px;border-radius:50%;background:var(--red,#E12A20);"></span>{{ currentExpo.sala }}</span>
-        <span style="display:inline-flex;align-items:center;gap:8px;background:var(--red,#E12A20);color:#fff;border-radius:999px;padding:9px 16px;font-size:14px;font-weight:600;">Exhibición permanente</span>
-      </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <button class="mm-btn" style="background:var(--red,#E12A20);color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Cómo llegar</button>
-        <button class="mm-btn" style="background:#fff;color:#171614;border:1px solid #E7E4DF;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Compartir</button>
-      </div>
-    </div>
-    <div style="border-radius:16px;overflow:hidden;background:#EDEAE5;aspect-ratio:3/4;box-shadow:0 16px 40px rgba(0,0,0,.14);">
-      <img src="{{ currentExpo.img }}" alt="" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-  </section>
-
-  <section style="background:#fff;border-top:1px solid #E7E4DF;">
-    <div style="max-width:1280px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1.6fr 1fr;gap:56px;align-items:start;">
-      <div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 18px;">Sobre la exposición</h3>
-        <sc-for list="{{ currentExpo.paras }}" as="p" hint-placeholder-count="2">
-          <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0 0 18px;">{{ p }}</p>
-        </sc-for>
-      </div>
-      <div style="background:#FBFAF8;border:1px solid #E7E4DF;border-radius:16px;padding:28px;">
-        <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:18px;">Información práctica</div>
-        <div style="display:flex;flex-direction:column;gap:16px;">
-          <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Sala</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">{{ currentExpo.sala }}</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Modalidad</span><span style="font-weight:600;font-size:14px;color:var(--red,#E12A20);text-align:right;">Exhibición permanente</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid #E7E4DF;padding-bottom:16px;"><span style="color:#9a948c;font-size:14px;">Entrada</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">Libre y gratuita</span></div>
-          <div style="display:flex;justify-content:space-between;gap:14px;"><span style="color:#9a948c;font-size:14px;">Contacto</span><span style="font-weight:600;font-size:14px;color:#171614;text-align:right;">museo@tresarroyos.gob.ar</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="max-width:1280px;margin:0 auto;padding:64px 24px 90px;">
-    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 22px;">Galería</h3>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
-      <sc-for list="{{ currentExpo.gallery }}" as="g" hint-placeholder-count="3">
-        <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="{{ g }}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-      </sc-for>
-    </div>
-  </section>
-</div>
-</sc-if>
-
-<!-- ===================== ARROYO SECO ===================== -->
-<sc-if value="{{ isArroyo }}">
-<div data-screen-label="Arroyo Seco">
-  <div style="max-width:1280px;margin:0 auto;padding:30px 24px 0;">
-    <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:#57534e;font-size:14px;font-weight:600;">← Volver a inicio</span>
-  </div>
-  <section style="max-width:1280px;margin:0 auto;padding:26px 24px 56px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;">
-    <div>
-      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:18px;">Yacimiento arqueológico · Distrito de Tres Arroyos</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(44px,5.2vw,80px);line-height:.94;letter-spacing:-.03em;color:#171614;margin:0;">Arroyo Seco</h1>
-      <p style="color:#3d3a35;font-size:19px;line-height:1.6;margin:24px 0 0;">Uno de los sitios arqueológicos más relevantes de la región pampeana, con evidencias de las primeras sociedades cazadoras-recolectoras que habitaron el actual distrito de Tres Arroyos.</p>
-    </div>
-    <div style="border-radius:220px 220px 18px 18px;overflow:hidden;aspect-ratio:3/4;background:#EDEAE5;box-shadow:0 20px 50px rgba(0,0,0,.15);">
-      <img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;">
-    </div>
-  </section>
-
-  <section style="background:#171614;color:#fff;padding:52px 0;">
-    <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;">
-      <div><div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:10px;">Ubicación</div><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">Valle del arroyo</div><div style="color:rgba(255,255,255,.6);margin-top:6px;">Zona rural del distrito</div></div>
-      <div><div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:10px;">Antigüedad</div><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">Miles de años</div><div style="color:rgba(255,255,255,.6);margin-top:6px;">Ocupación humana temprana</div></div>
-      <div><div style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:10px;">Hallazgos</div><div style="font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:600;">Restos y utensilios</div><div style="color:rgba(255,255,255,.6);margin-top:6px;">Enterratorios y fauna extinta</div></div>
-    </div>
-  </section>
-
-  <section style="background:#fff;border-bottom:1px solid #E7E4DF;">
-    <div style="max-width:1280px;margin:0 auto;padding:64px 24px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
-      <div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 16px;">El sitio</h3>
-        <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0 0 16px;">Las excavaciones en Arroyo Seco permitieron documentar la presencia de grupos cazadores-recolectores y su relación con el ambiente pampeano. Los materiales recuperados aportan información clave sobre la vida cotidiana, la alimentación y las prácticas funerarias de estas poblaciones.</p>
-        <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0;">Parte de estos hallazgos y su interpretación se integran al recorrido del museo, conectando el patrimonio arqueológico del distrito con la historia de Tres Arroyos.</p>
-      </div>
-      <div>
-        <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 16px;">En el museo</h3>
-        <p style="color:#3d3a35;font-size:17px;line-height:1.7;margin:0 0 24px;">La sala de arqueología reúne piezas y paneles que contextualizan el yacimiento y las culturas de la región. Una invitación a comprender el pasado profundo del territorio.</p>
-        <button class="mm-btn" onClick="{{ goExpos }}" style="background:#171614;color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Ver exposiciones permanentes →</button>
-      </div>
-    </div>
-  </section>
-
-  <section style="max-width:1280px;margin:0 auto;padding:60px 24px 90px;">
-    <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:#171614;margin:0 0 22px;">Galería</h3>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;">
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/muestra-arqueologia-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/hall-mulazzi.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div style="border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#EDEAE5;"><img src="uploads/museo-puerta.jpg" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-    </div>
-  </section>
-</div>
-</sc-if>
-
-<!-- ===================== VISITA ===================== -->
-<sc-if value="{{ isVisita }}">
-<div data-screen-label="Visitá">
-  <section style="position:relative;color:#fff;padding:90px 0;overflow:hidden;background:#171614;">
-    <img src="uploads/museo-puerta.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,22,20,.55) 0%,rgba(23,22,20,.75) 100%);"></div>
-    <div style="position:relative;max-width:1280px;margin:0 auto;padding:0 24px;">
-      <div style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--red,#E12A20);font-weight:700;margin-bottom:16px;">El Museo de Tres Arroyos</div>
-      <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(38px,4.6vw,68px);line-height:1;letter-spacing:-.025em;margin:0;">¡Visitanos!</h1>
-      <p style="color:rgba(255,255,255,.82);font-size:clamp(16px,1.5vw,20px);max-width:56ch;margin:22px 0 0;line-height:1.55;">Te esperamos en el edificio del antiguo mercado municipal, en pleno centro de Tres Arroyos.</p>
-    </div>
-  </section>
-
-  <section style="max-width:1280px;margin:0 auto;padding:64px 24px 96px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start;">
-    <div>
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,3vw,34px);letter-spacing:-.02em;color:#171614;margin:0 0 28px;">Cómo llegar</h2>
-      <div style="display:flex;flex-direction:column;gap:22px;">
-        <div>
-          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:6px;">Dirección</div>
-          <div style="font-size:17px;font-weight:600;color:#171614;">Av. San Martín 323</div>
-          <div style="color:#57534e;font-size:15px;margin-top:2px;">Tres Arroyos, Buenos Aires</div>
-        </div>
-        <div>
-          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:6px;">Horarios</div>
-          <div style="font-size:17px;font-weight:600;color:#171614;">Martes a Domingo</div>
-          <div style="color:#57534e;font-size:15px;margin-top:2px;">10 a 18 h · Lunes cerrado</div>
-        </div>
-        <div>
-          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:6px;">Teléfono</div>
-          <div style="font-size:17px;font-weight:600;color:#171614;">+54 2983 40-0000</div>
-        </div>
-        <div>
-          <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9a948c;font-weight:700;margin-bottom:6px;">Contacto</div>
-          <div style="font-size:17px;font-weight:600;color:#171614;">museo@tresarroyos.gob.ar</div>
-        </div>
-      </div>
-      <div style="margin-top:34px;">
-        <button class="mm-btn" style="background:var(--red,#E12A20);color:#fff;border:none;padding:14px 24px;border-radius:11px;font-size:15px;font-weight:600;cursor:pointer;">Cómo llegar en el mapa →</button>
-      </div>
-    </div>
-    <div style="border-radius:16px;overflow:hidden;border:1px solid #E7E4DF;aspect-ratio:4/3;box-shadow:0 16px 40px rgba(0,0,0,.1);">
-      <iframe src="https://www.google.com/maps?q=Av.+San+Mart%C3%ADn+323%2C+Tres+Arroyos%2C+Buenos+Aires%2C+Argentina&output=embed" style="width:100%;height:100%;border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación del museo en el mapa"></iframe>
-    </div>
-  </section>
-</div>
-</sc-if>
-
-<!-- ===================== ADMIN ===================== -->
-<sc-if value="{{ isAdmin }}">
-<div data-screen-label="Panel admin" style="background:#F3F1ED;min-height:calc(100vh - 92px);display:grid;grid-template-columns:256px 1fr;">
-  <aside style="background:#171614;color:#fff;padding:30px 20px;display:flex;flex-direction:column;gap:8px;">
-    <div style="display:flex;align-items:center;gap:11px;padding:0 6px 22px;">
-      <div style="width:36px;height:36px;border-radius:9px;overflow:hidden;flex:none;"><img src="uploads/logo-mulazzi-removebg-preview.png" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-      <div style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;line-height:1.3;">Panel de<br>gestión</div>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:9px;background:rgba(255,255,255,.1);font-size:14px;font-weight:600;"><span style="width:6px;height:6px;border-radius:50%;background:var(--red,#E12A20);"></span>Eventos</div>
-    <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:9px;color:rgba(255,255,255,.6);font-size:14px;font-weight:500;">Imágenes de exposiciones</div>
-    <div style="display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:9px;color:rgba(255,255,255,.6);font-size:14px;font-weight:500;">Textos de páginas</div>
-    <div style="margin-top:auto;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);">
-      <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:rgba(255,255,255,.6);font-size:14px;font-weight:600;">← Ver el sitio</span>
-    </div>
-  </aside>
-
-  <div style="padding:38px 40px 60px;overflow:auto;">
-    <!-- Eventos -->
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px;">
-      <div>
-        <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;letter-spacing:-.02em;color:#171614;margin:0;">Eventos</h2>
-        <p style="color:#9a948c;font-size:15px;margin:6px 0 0;">Gestioná la agenda del museo y su estado de publicación.</p>
-      </div>
-      <button class="mm-btn" onClick="{{ newEvent }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">+ Nuevo evento</button>
-    </div>
-
-    <div style="background:#fff;border:1px solid #E7E4DF;border-radius:16px;overflow:hidden;">
-      <div style="display:grid;grid-template-columns:2.4fr 1.1fr 1fr 1.2fr;gap:16px;padding:15px 24px;border-bottom:1px solid #E7E4DF;background:#FBFAF8;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9a948c;font-weight:700;">
-        <div>Evento</div><div>Fecha</div><div>Estado</div><div style="text-align:right;">Acciones</div>
-      </div>
-      <sc-for list="{{ allEvents }}" as="ev" hint-placeholder-count="4">
-        <div style="display:grid;grid-template-columns:2.4fr 1.1fr 1fr 1.2fr;gap:16px;padding:18px 24px;border-bottom:1px solid #F0EDE8;align-items:center;">
-          <div style="display:flex;align-items:center;gap:14px;">
-            <div style="width:46px;height:46px;border-radius:9px;overflow:hidden;flex:none;background:#EDEAE5;"><img src="{{ ev.img }}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-            <div><div style="font-weight:600;font-size:15px;color:#171614;line-height:1.2;">{{ ev.titulo }}</div><div style="color:#9a948c;font-size:13px;margin-top:2px;">{{ ev.subtitulo }}</div></div>
-          </div>
-          <div style="font-size:14px;color:#57534e;font-weight:500;">{{ ev.dateLabel }}</div>
-          <div><span style="{{ ev.tagStyle }}"><span style="{{ ev.dotStyle }}"></span>{{ ev.estado }}</span></div>
-          <div style="display:flex;gap:8px;justify-content:flex-end;align-items:center;">
-            <button class="mm-btn" onClick="{{ ev.edit }}" style="background:#F3F1ED;color:#171614;border:none;padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">Editar</button>
-            <button class="mm-btn" onClick="{{ ev.toggle }}" style="background:transparent;color:var(--red,#E12A20);border:1px solid #E7E4DF;padding:8px 12px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;">{{ ev.toggleLabel }}</button>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-
-    <!-- Imágenes -->
-    <div style="margin-top:46px;margin-bottom:22px;">
-      <h2 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;letter-spacing:-.02em;color:#171614;margin:0;">Imágenes de exposiciones</h2>
-      <p style="color:#9a948c;font-size:15px;margin:6px 0 0;">Subí y actualizá las imágenes que se muestran en las salas y en el sitio.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
-      <div style="border:2px dashed #D4CFC7;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;min-height:200px;cursor:pointer;background:#fff;">
-        <div style="width:44px;height:44px;border-radius:50%;background:#F3F1ED;display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--red,#E12A20);margin-bottom:12px;">+</div>
-        <div style="font-weight:600;font-size:14px;color:#171614;">Subir imagen</div>
-        <div style="font-size:12px;color:#9a948c;margin-top:5px;font-family:'Public Sans',monospace;">JPG · PNG · WebP</div>
-      </div>
-      <sc-for list="{{ imagenes }}" as="im" hint-placeholder-count="4">
-        <div class="mm-card" style="border:1px solid #E7E4DF;border-radius:14px;overflow:hidden;background:#fff;">
-          <div style="aspect-ratio:4/3;overflow:hidden;background:#EDEAE5;"><img src="{{ im.img }}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-          <div style="padding:14px 16px;">
-            <div style="font-weight:600;font-size:14px;color:#171614;">{{ im.titulo }}</div>
-            <div style="font-size:12px;color:#9a948c;margin-top:2px;">{{ im.sala }}</div>
-            <div style="display:flex;gap:14px;margin-top:12px;">
-              <span class="mm-link" style="cursor:pointer;font-size:13px;font-weight:600;color:#57534e;">Reemplazar</span>
-              <span class="mm-link" style="cursor:pointer;font-size:13px;font-weight:600;color:#9a948c;">Eliminar</span>
-            </div>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-  </div>
-</div>
-
-<!-- Modal formulario -->
-<sc-if value="{{ showForm }}">
-<div style="position:fixed;inset:0;background:rgba(23,22,20,.55);z-index:80;display:flex;align-items:flex-start;justify-content:center;padding:44px 20px;overflow:auto;backdrop-filter:blur(2px);">
-  <div style="background:#fff;border-radius:18px;width:100%;max-width:580px;padding:32px;box-shadow:0 24px 70px rgba(0,0,0,.3);">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
-      <h3 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:23px;color:#171614;margin:0;">{{ formTitle }}</h3>
-      <button onClick="{{ cancel }}" style="background:#F3F1ED;border:none;width:34px;height:34px;border-radius:9px;font-size:18px;color:#57534e;cursor:pointer;">✕</button>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:18px;">
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Título</label>
-        <input value="{{ draft.titulo }}" onChange="{{ onTitulo }}" placeholder="Nombre del evento" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Subtítulo</label>
-        <input value="{{ draft.subtitulo }}" onChange="{{ onSubtitulo }}" placeholder="Breve bajada" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-        <div>
-          <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Fecha</label>
-          <input type="date" value="{{ draft.fecha }}" onChange="{{ onFecha }}" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
-        </div>
-        <div>
-          <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Hora</label>
-          <input type="time" value="{{ draft.hora }}" onChange="{{ onHora }}" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
-        </div>
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Lugar</label>
-        <input value="{{ draft.lugar }}" onChange="{{ onLugar }}" placeholder="Sala o dirección" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;">
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Descripción</label>
-        <textarea value="{{ draft.desc }}" onChange="{{ onDesc }}" rows="4" placeholder="Detalle del evento" style="width:100%;padding:11px 13px;border:1px solid #E7E4DF;border-radius:9px;font-size:15px;color:#171614;background:#FBFAF8;resize:vertical;line-height:1.5;"></textarea>
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Estado</label>
-        <div style="display:flex;gap:10px;">
-          <button onClick="{{ setPub }}" style="{{ pubStyle }}">Publicado</button>
-          <button onClick="{{ setBor }}" style="{{ borStyle }}">Borrador</button>
-        </div>
-      </div>
-      <div>
-        <label style="display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#9a948c;margin-bottom:7px;">Imagen</label>
-        <div style="border:2px dashed #D4CFC7;border-radius:11px;padding:20px;text-align:center;cursor:pointer;background:#FBFAF8;">
-          <div style="font-weight:600;font-size:14px;color:#171614;">Arrastrá una imagen o hacé clic para subir</div>
-          <div style="font-size:12px;color:#9a948c;margin-top:4px;font-family:'Public Sans',monospace;">JPG · PNG · WebP · máx 5 MB</div>
-        </div>
-      </div>
-    </div>
-    <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:28px;">
-      <button class="mm-btn" onClick="{{ cancel }}" style="background:#fff;color:#57534e;border:1px solid #E7E4DF;padding:12px 22px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">Cancelar</button>
-      <button class="mm-btn" onClick="{{ save }}" style="background:var(--red,#E12A20);color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;">Guardar evento</button>
-    </div>
-  </div>
-</div>
-</sc-if>
-</sc-if>
-
-</main>
-
-<!-- Footer (solo sitio público) -->
-<sc-if value="{{ isPublic }}" hint-placeholder-val="{{ true }}">
-<footer style="background:#171614;color:#fff;padding:60px 0 28px;">
-  <div style="max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;">
-    <div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-        <div style="width:42px;height:42px;border-radius:10px;overflow:hidden;"><img src="uploads/logo-mulazzi-removebg-preview.png" alt="" style="width:100%;height:100%;object-fit:cover;"></div>
-        <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;">MUSEO MULAZZI</div>
-      </div>
-      <p style="color:rgba(255,255,255,.55);font-size:14px;line-height:1.6;max-width:34ch;margin:0;">Museo Municipal José A. Mulazzi. El patrimonio histórico, arqueológico y artístico de Tres Arroyos.</p>
-    </div>
-    <div>
-      <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:14px;">Visitá</div>
-      <div style="color:rgba(255,255,255,.75);font-size:14px;line-height:2;">Av. San Martín 323<br>Tres Arroyos, BA<br>Mar a Dom · 10 a 18 h</div>
-    </div>
-    <div>
-      <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:14px;">Explorar</div>
-      <div style="display:flex;flex-direction:column;gap:9px;font-size:14px;">
-        <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:rgba(255,255,255,.75);">Exposiciones</span>
-        <span class="mm-link" onClick="{{ goEventoBtn }}" style="cursor:pointer;color:rgba(255,255,255,.75);">Agenda</span>
-        <span class="mm-link" onClick="{{ goHome }}" style="cursor:pointer;color:rgba(255,255,255,.75);">El museo</span>
-      </div>
-    </div>
-    <div>
-      <div style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin-bottom:14px;">Contacto</div>
-      <div style="color:rgba(255,255,255,.75);font-size:14px;line-height:2;">museo@tresarroyos.gob.ar<br>+54 2983 40-0000<br>@museomulazzi</div>
-    </div>
-  </div>
-  <div style="max-width:1280px;margin:36px auto 0;padding:22px 24px 0;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:rgba(255,255,255,.4);font-size:13px;">
-    <span>© 2026 Museo Municipal José A. Mulazzi · Tres Arroyos</span>
-    <span>Municipalidad de Tres Arroyos</span>
-  </div>
-</footer>
-</sc-if>
-
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#E12A20&quot;,&quot;options&quot;:[&quot;#E12A20&quot;,&quot;#1f6feb&quot;,&quot;#2f8a5b&quot;,&quot;#171614&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Marca&quot;},&quot;showToolbar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Vista previa&quot;},&quot;openTo&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;home&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;evento&quot;,&quot;admin&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Vista previa&quot;}}">
-class Component extends DCLogic {
-  months = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
-  monthsFull = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-  state = {
-    view: 'home', variant: 'A', currentEventId: 1, currentExpoId: 1, editingId: null,
-    draft: this.blank(),
-    events: [
-      {id:1,titulo:'Muestra colectiva de Arte',subtitulo:'Mes Internacional de la Mujer',fecha:'2026-03-12',hora:'19:00',lugar:'Av. San Martín 323',estado:'Publicado',img:'uploads/flyer-mulazzi.webp',desc:'El Museo Mulazzi presenta una muestra colectiva que reúne obras de artistas de Tres Arroyos en el marco del Mes Internacional de la Mujer. Pintura, fotografía y textil conviven en las salas del antiguo mercado municipal.\n\nLa apertura contará con la presencia de las artistas y una visita guiada por la curaduría. La entrada es libre y gratuita durante todo el período de exhibición.'},
-      {id:2,titulo:'Ciclo de charlas: Historia local',subtitulo:'Encuentros con historiadores',fecha:'2026-03-20',hora:'18:30',lugar:'Sala de conferencias',estado:'Borrador',img:'uploads/hall-mulazzi.jpg',desc:'Un ciclo de tres encuentros para recorrer la historia de la ciudad desde su fundación, con la participación de historiadores y vecinos.'},
-      {id:3,titulo:'Culturas Andinas',subtitulo:'Muestra permanente de arqueología',fecha:'2026-04-05',hora:'10:00',lugar:'Sala de arqueología',estado:'Publicado',img:'uploads/muestra-arqueologia-mulazzi.jpg',desc:'Una selección de piezas que documentan las culturas andinas y su legado: cerámica, textiles y herramientas en diálogo con el territorio.'},
-      {id:4,titulo:'La Noche de los Museos',subtitulo:'Apertura nocturna especial',fecha:'2026-05-18',hora:'20:00',lugar:'Todo el edificio',estado:'Borrador',img:'uploads/museo-puerta.jpg',desc:'Una noche para recorrer el museo con actividades especiales, música en vivo y visitas guiadas por todas las salas.'}
-    ],
-    imagenes: [
-      {id:1,titulo:'Hall central',sala:'Sala principal',img:'uploads/hall-mulazzi.jpg'},
-      {id:2,titulo:'Culturas Andinas',sala:'Arqueología',img:'uploads/muestra-arqueologia-mulazzi.jpg'},
-      {id:3,titulo:'Fachada histórica',sala:'Ingreso',img:'uploads/museo-puerta.jpg'},
-      {id:4,titulo:'Muestra colectiva',sala:'Arte temporario',img:'uploads/flyer-mulazzi.webp'}
-    ]
-  };
-  blank(){ return {titulo:'',subtitulo:'',fecha:'',hora:'19:00',lugar:'Av. San Martín 323',estado:'Borrador',img:'',desc:''}; }
-  componentDidMount(){ if(this.props.openTo && this.props.openTo!==this.state.view) this.setState({view:this.props.openTo}); }
-  fmt(iso){ if(!iso||iso.indexOf('-')<0) return {dd:'--',mon:'',monFull:'',yyyy:''}; const [y,m,d]=iso.split('-').map(Number); return {dd:String(d).padStart(2,'0'),mon:this.months[m-1],monFull:this.monthsFull[m-1],yyyy:y}; }
-  hexToRgba(hex,a){ hex=(hex||'#E12A20').replace('#',''); if(hex.length===3) hex=hex.split('').map(c=>c+c).join(''); const n=parseInt(hex,16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; }
-  setView(v){ this.setState({view:v,editingId:null}); if(typeof window!=='undefined') window.scrollTo(0,0); }
-  goEvento(id){ this.setState({view:'evento',currentEventId:id}); if(typeof window!=='undefined') window.scrollTo(0,0); }
-  goExpoDetail(id){ this.setState({view:'expo-detail',currentExpoId:id}); if(typeof window!=='undefined') window.scrollTo(0,0); }
-  newEvent(){ this.setState({editingId:'new',draft:this.blank()}); }
-  editEvent(id){ const e=this.state.events.find(x=>x.id===id); this.setState({editingId:id,draft:{...e}}); }
-  cancel(){ this.setState({editingId:null}); }
-  save(){ this.setState(s=>{ const d=s.draft; if(!d.titulo) return {editingId:null}; if(s.editingId==='new'){ const id=Math.max(0,...s.events.map(e=>e.id))+1; return {events:[...s.events,{...d,id,img:d.img||'uploads/hall-mulazzi.jpg'}],editingId:null}; } return {events:s.events.map(e=>e.id===s.editingId?{...d}:e),editingId:null}; }); }
-  toggleEstado(id){ this.setState(s=>({events:s.events.map(e=>e.id===id?{...e,estado:e.estado==='Publicado'?'Borrador':'Publicado'}:e)})); }
-  h(f){ this._h=this._h||{}; if(!this._h[f]) this._h[f]=e=>{ const v=e.target.value; this.setState(s=>({draft:{...s.draft,[f]:v}})); }; return this._h[f]; }
-  tab(a){ return {fontFamily:"'Public Sans',sans-serif",border:'none',cursor:'pointer',padding:'6px 14px',borderRadius:'7px',fontSize:'13px',fontWeight:600,whiteSpace:'nowrap',background:a?'#fff':'transparent',color:a?'#171614':'rgba(255,255,255,.6)'}; }
-  decorate(e,ac){ const f=this.fmt(e.fecha); const pub=e.estado==='Publicado'; return {...e,...f, chip:f.dd+' '+f.mon, dateLabel:parseInt(f.dd,10)+' de '+f.monFull+', '+f.yyyy, open:()=>this.goEvento(e.id), edit:()=>this.editEvent(e.id), toggle:()=>this.toggleEstado(e.id), toggleLabel:pub?'Ocultar':'Publicar', isPub:pub, tagStyle:{padding:'4px 11px',borderRadius:'999px',fontSize:'12px',fontWeight:600,display:'inline-flex',alignItems:'center',gap:'6px',background:pub?this.hexToRgba(ac,.1):'#EDEAE5',color:pub?'#B71F17':'#8a857e'}, dotStyle:{width:'6px',height:'6px',borderRadius:'50%',background:pub?ac:'#B4AEA6'} }; }
-  renderVals(){
-    const s=this.state;
-    const ac=this.props.accent||'#E12A20';
-    const all=s.events.map(e=>this.decorate(e,ac));
-    const pub=all.filter(e=>e.isPub);
-    const cur0=s.events.find(e=>e.id===s.currentEventId)||s.events[0];
-    const cur=this.decorate(cur0,ac); cur.paras=(cur0.desc||'').split('\n\n');
-    const isPubDraft=s.draft.estado==='Publicado';
-    const seg={flex:1,padding:'11px',borderRadius:'9px',border:'1px solid',cursor:'pointer',fontWeight:600,fontSize:'14px',fontFamily:"'Public Sans',sans-serif"};
-    const permanentes=[
-      {id:1,titulo:'Culturas Andinas',sala:'Sala de Arqueología',img:'uploads/muestra-arqueologia-mulazzi.jpg',desc:'Cerámica, textiles y herramientas de los pueblos originarios de la región andina.',paras:['La muestra reúne una selección de piezas que documentan las culturas andinas y su legado: cerámica, textiles y herramientas en diálogo con el territorio.','El recorrido conecta estos objetos con la historia del poblamiento americano, poniendo en contexto las técnicas y los usos cotidianos y rituales de cada pieza.'],gallery:['uploads/muestra-arqueologia-mulazzi.jpg','uploads/hall-mulazzi.jpg','uploads/museo-puerta.jpg']},
-      {id:2,titulo:'Tres Arroyos, nuestra historia',sala:'Entrepiso',img:'uploads/hall-mulazzi.jpg',desc:'Recorrido fotográfico y documental por la historia de la ciudad y sus instituciones.',paras:['Un recorrido fotográfico y documental por la historia de la ciudad y sus instituciones, desde la fundación hasta la actualidad.','Fotografías, actas y objetos cotidianos narran el crecimiento de Tres Arroyos y la vida de quienes la habitaron.'],gallery:['uploads/hall-mulazzi.jpg','uploads/museo-puerta.jpg','uploads/muestra-arqueologia-mulazzi.jpg']},
-      {id:3,titulo:'El antiguo Mercado',sala:'Fachada e ingreso',img:'uploads/museo-puerta.jpg',desc:'La historia del edificio del antiguo mercado municipal que hoy alberga al museo.',paras:['La historia del edificio del antiguo mercado municipal que hoy alberga al museo, desde su construcción hasta su reconversión cultural.','Planos, fotografías de época y testimonios de vecinos reconstruyen la vida del mercado antes de convertirse en museo.'],gallery:['uploads/museo-puerta.jpg','uploads/hall-mulazzi.jpg','uploads/muestra-arqueologia-mulazzi.jpg']}
-    ];
-    const permanentesDecorated=permanentes.map(p=>({...p, open:()=>this.goExpoDetail(p.id)}));
-    const curExpo0=permanentes.find(p=>p.id===s.currentExpoId)||permanentes[0];
-    const currentExpo={...curExpo0};
-    return {
-      rootVars:{'--red':ac,fontFamily:"'Public Sans',sans-serif",color:'#171614',background:'#FBFAF8',minHeight:'100vh'},
-      showToolbar:this.props.showToolbar!==false,
-      permanentes:permanentesDecorated,
-      currentExpo,
-      isExpos:s.view==='expos', isArroyo:s.view==='arroyo', isVisita:s.view==='visita', isExpoDetail:s.view==='expo-detail',
-      goExpos:()=>this.setView('expos'), goArroyo:()=>this.setView('arroyo'), goVisita:()=>this.setView('visita'),
-      view:s.view, isHome:s.view==='home', isEvento:s.view==='evento', isAdmin:s.view==='admin', isPublic:s.view!=='admin',
-      isA:s.variant==='A', isB:s.variant==='B', isC:s.variant==='C',
-      goHome:()=>this.setView('home'), goAdmin:()=>this.setView('admin'), goEventoBtn:()=>this.goEvento(s.currentEventId),
-      setVA:()=>this.setState({variant:'A'}), setVB:()=>this.setState({variant:'B'}), setVC:()=>this.setState({variant:'C'}),
-      tHome:this.tab(s.view==='home'), tEvento:this.tab(s.view==='evento'), tAdmin:this.tab(s.view==='admin'),
-      vA:this.tab(s.variant==='A'), vB:this.tab(s.variant==='B'), vC:this.tab(s.variant==='C'),
-      allEvents:all, publicEvents:pub, currentEvent:cur, imagenes:s.imagenes,
-      newEvent:()=>this.newEvent(), showForm:s.editingId!==null, formTitle:s.editingId==='new'?'Nuevo evento':'Editar evento',
-      draft:s.draft, onTitulo:this.h('titulo'), onSubtitulo:this.h('subtitulo'), onFecha:this.h('fecha'), onHora:this.h('hora'), onLugar:this.h('lugar'), onDesc:this.h('desc'),
-      setPub:()=>this.setState(st=>({draft:{...st.draft,estado:'Publicado'}})), setBor:()=>this.setState(st=>({draft:{...st.draft,estado:'Borrador'}})),
-      pubStyle:{...seg,background:isPubDraft?ac:'#fff',color:isPubDraft?'#fff':'#57534e',borderColor:isPubDraft?ac:'#E7E4DF'},
-      borStyle:{...seg,background:!isPubDraft?'#171614':'#fff',color:!isPubDraft?'#fff':'#57534e',borderColor:!isPubDraft?'#171614':'#E7E4DF'},
-      save:()=>this.save(), cancel:()=>this.cancel()
-    };
-  }
-}
-</script>
 </body>
+
 </html>
