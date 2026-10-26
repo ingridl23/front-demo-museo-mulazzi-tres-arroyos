@@ -12,7 +12,6 @@
         <helmet data-dc-atomics>
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
             <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
             <style>
                 * {
@@ -38,7 +37,7 @@
                     color: #B71F17
                 }
                 
-                 ::selection {
+                ::selection {
                     background: var(--red, #E12A20);
                     color: #fff
                 }
@@ -840,7 +839,6 @@
 
             </main>
 
-
             <!-- Footer (solo sitio público) -->
             <sc-if value="{{ isPublic }}" hint-placeholder-val="{{ true }}">
                 <footer style="background:#171614;color:#fff;padding:60px 0 28px;">
@@ -890,8 +888,8 @@
         {id:2,titulo:'Culturas Andinas',sala:'Arqueología',img:'uploads/muestra-arqueologia-mulazzi.jpg'}, {id:3,titulo:'Fachada histórica',sala:'Ingreso',img:'uploads/museo-puerta.jpg'}, {id:4,titulo:'Muestra colectiva',sala:'Arte temporario',img:'uploads/flyer-mulazzi.webp'}
         ] }; blank(){ return {titulo:'',subtitulo:'',fecha:'',hora:'19:00',lugar:'Av. San Martín 323',estado:'Borrador',img:'',desc:''}; } componentDidMount(){ if(this.props.openTo && this.props.openTo!==this.state.view) this.setState({view:this.props.openTo});
         } fmt(iso){ if(!iso||iso.indexOf('-')
-        <0) return {dd: '--',mon: '',monFull: '',yyyy: ''}; const [y,m,d]=iso.split( '-').map(Number); return {dd:String(d).padStart(2, '0'),mon:this.months[m-1],monFull:this.monthsFull[m-1],yyyy:y}; } hexToRgba(hex,a){ hex=(hex|| '#E12A20').replace( '#', '');
-            if(hex.length===3) hex=hex.split( '').map(c=>c+c).join(''); const n=parseInt(hex,16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; } setView(v){ this.setState({view:v,editingId:null}); if(typeof window!=='undefined') window.scrollTo(0,0); } goEvento(id){ this.setState({view:'evento',currentEventId:id});
+        <0) return {dd: '--',mon: '',monFull: '',yyyy: ''}; const [y,m,d]=iso.split( '-').map(Number); return {dd:String(d).padStart(2, '0'),mon:this.months[m-1],monFull:this.monthsFull[m-1],yyyy:y}; } hexToRgba(hex,a){
+            hex=(hex|| '#E12A20').replace( '#', ''); if(hex.length===3) hex=hex.split( '').map(c=>c+c).join(''); const n=parseInt(hex,16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; } setView(v){ this.setState({view:v,editingId:null}); if(typeof window!=='undefined') window.scrollTo(0,0); } goEvento(id){ this.setState({view:'evento',currentEventId:id});
             if(typeof window!=='undefined') window.scrollTo(0,0); } goExpoDetail(id){ this.setState({view:'expo-detail',currentExpoId:id}); if(typeof window!=='undefined') window.scrollTo(0,0); } newEvent(){ this.setState({editingId:'new',draft:this.blank()});
             } editEvent(id){ const e=this.state.events.find(x=>x.id===id); this.setState({editingId:id,draft:{...e}}); } cancel(){ this.setState({editingId:null}); } save(){ this.setState(s=>{ const d=s.draft; if(!d.titulo) return {editingId:null}; if(s.editingId==='new'){
             const id=Math.max(0,...s.events.map(e=>e.id))+1; return {events:[...s.events,{...d,id,img:d.img||'uploads/hall-mulazzi.jpg'}],editingId:null}; } return {events:s.events.map(e=>e.id===s.editingId?{...d}:e),editingId:null}; }); } toggleEstado(id){
@@ -918,9 +916,6 @@
             pubStyle:{...seg,background:isPubDraft?ac:'#fff',color:isPubDraft?'#fff':'#57534e',borderColor:isPubDraft?ac:'#E7E4DF'}, borStyle:{...seg,background:!isPubDraft?'#171614':'#fff',color:!isPubDraft?'#fff':'#57534e',borderColor:!isPubDraft?'#171614':'#E7E4DF'},
             save:()=>this.save(), cancel:()=>this.cancel() }; } }
     </script>
-
-
-
 </body>
 
 </html>
